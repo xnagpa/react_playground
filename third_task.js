@@ -30,9 +30,8 @@ class BlogItem extends React.Component{
 
 
 ReactDOM.render(
-//   React.createElement(Image, {src: "http://i.cdn.turner.com/v5cache/CARTOON/site/Images/i70/adventure-time.png"}),
-//   document.getElementById("app")
- //    React.createElement(TextBox, {str: "papapap"}),
-     React.createElement(BlogItem),
+     React.createElement('div', {},React.createElement(BlogItem),
+                        React.createElement(BlogItem),
+                        React.createElement(BlogItem),),
      document.getElementById("app")
 );
