@@ -86,18 +86,16 @@ class BlogList extends React.Component {
   }
 
   render() {
-    const blog_entries_inner = this.state.blog_entries;
     return React.createElement(BlogListPresenter, {
-      xxx: blog_entries_inner
+      blog_entries: this.state.blog_entries
     })
   }
 }
 
 class BlogListPresenter extends React.Component {
   render() {
-    const blog_entries = this.props.xxx;
     return React.createElement('ul', {},
-      _.map(blog_entries, (entry, key) => (
+      _.map(this.props.blog_entries, (entry, key) => (
         React.createElement(BlogItem, {
           text: entry.text,
           image: entry.image,

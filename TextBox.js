@@ -3,7 +3,7 @@ const TextBox = (props) => (
   React.createElement(
     Span,
     null,
-    props.str
+    props.children
   )
 );
 
@@ -17,6 +17,6 @@ const Span = (props) => (
 
 ReactDOM.render(
   React.createElement(
-    TextBox, {str: "Hoola hoop"}),
+    TextBox, null, "Hoola hoop"),
   document.getElementById("app")
 );
