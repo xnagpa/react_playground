@@ -1,64 +1,109 @@
-class Image extends React.Component{
+class Image extends React.Component {
   render() {
-    return React.createElement('img',{ src: this.props.src})
+    return React.createElement('img', {
+      src: this.props.src,
+      style: {
+        width: this.props.width,
+        height: this.props.height
+      },
+      alt: this.props.alt
+    })
   }
 }
 
-class TextBox extends React.Component{
+class TextBox extends React.Component {
   render() {
-    return React.createElement(Span, { str: this.props.str})
+    return React.createElement(Span, {}, this.props.children)
   }
 }
 
-class Span extends React.Component{
+class Span extends React.Component {
   render() {
-    return React.createElement('span', {style: {color: 'red'}},
-      this.props.children, this.props.str)
-     }
+    return React.createElement('span', {
+        style: {
+          color: 'red'
+        }
+      },
+      this.props.children)
+  }
 }
 
-class BlogItem extends React.Component{
+class BlogItem extends React.Component {
   render() {
-    return React.createElement('div',{},
-           React.createElement(TextBox, {str: this.props.text}),
-           React.createElement(Image, {src: this.props.image})
-           )
+    return React.createElement('div', {},
+      React.createElement(TextBox, null, this.props.text),
+      React.createElement(Image, {
+        src: this.props.image,
+        width: this.props.width,
+        height: this.props.height,
+        alt: this.props.alt
+      })
+    )
   }
 }
 
 
-blog_entries = [{image: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
-                 text: "Adventure time, come on grab your friends"},
-                {image: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
-                 text: "We'll come to very distand land"},
-                {image: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
-                 text: "With Jake the dog and Finn the human"},
-                {image: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
-                 text: "Fun will never end ADVENTURE TIIIIIME!!!"}
-               ]
+const blog_entries = [{
+  image: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+  width: 100,
+  height: 100,
+  alt: 'Finn and Jake',
+  text: "Adventure time, come on grab your friends"
+}, {
+  image: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+  width: 100,
+  height: 100,
+  alt: 'Finn and Jake',
+  text: "We'll come to very distand land"
+}, {
+  image: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+  width: 100,
+  height: 100,
+  alt: 'Finn and Jake',
+  text: "With Jake the dog and Finn the human"
+}, {
+  image: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+  width: 100,
+  height: 100,
+  alt: 'Finn and Jake',
+  text: "Fun will never end ADVENTURE TIIIIIME!!!"
+}, ];
 
 
-class BlogPage extends React.Component{
-  constructor(props){
+class BlogPage extends React.Component {
+  constructor(props) {
     super(props);
-    this.state = { blog_entries };
+    this.state = {
+      blog_entries
+    };
   }
 
-  render(){
-    const bl_entries = this.state
-    return React.createElement(BlogList, { bl_entries })
+  render() {
+    return React.createElement(BlogList, {
+      entries: this.state.blog_entries
+    })
   }
-
 }
 
-const BlogList = ({ bl_entries }) => (
-  alert(bl_entries);
-  React.createElement('div',null,_.map(bl_entries, (entry, key)=>(React.createElement('p',{key},entry.text))))
+class BlogList extends React.Component {
+  render() {
+    console.log(this.props.entries)
+    return React.createElement('ul', {},
+      _.map(this.props.entries, (entry, key) => (
+        React.createElement(BlogItem, {
+          text: entry.text,
+          image: entry.image,
+          key,
+          width: entry.width,
+          height: entry.height,
+          alt: entry.alt
+        }))))
+  }
+}
 
-)
+
 
 ReactDOM.render(
-     React.createElement(BlogPage
-     ),
-     document.getElementById("app")
+  React.createElement(BlogPage),
+  document.getElementById("app")
 );
