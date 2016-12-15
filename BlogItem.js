@@ -6,14 +6,14 @@ class Image extends React.Component{
 
 class TextBox extends React.Component{
   render() {
-    return React.createElement(Span, { str: this.props.str})
+    return React.createElement(Span, null, this.props.str)
   }
 }
 
 class Span extends React.Component{
   render() {
     return React.createElement('span', {style: {color: 'red'}},
-      this.props.children, this.props.str)
+      this.props.children)
      }
 }
 

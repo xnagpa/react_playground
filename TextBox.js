@@ -2,7 +2,8 @@ const DOM = React.DOM;
 const TextBox = (props) => (
   React.createElement(
     Span,
-    {str: props.str}
+    null,
+    props.str
   )
 );
 
@@ -11,7 +12,7 @@ const Span = (props) => (
     style: {
       border: '1px solid red'
     }
-  }, props.children, props.str)
+  }, props.children)
 )
 
 ReactDOM.render(

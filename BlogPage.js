@@ -87,7 +87,6 @@ class BlogPage extends React.Component {
 
 class BlogList extends React.Component {
   render() {
-    console.log(this.props.entries)
     return React.createElement('ul', {},
       _.map(this.props.entries, (entry, key) => (
         React.createElement(BlogItem, {
