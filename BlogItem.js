@@ -66,21 +66,19 @@ class Like extends React.Component {
         this.state.count
       }
       likes < /p> < button onClick = {
-        this.handleClick
-      } > Like this shit < /button></div >
-    )
-  }
+      this.handleClick
+    } > Like this shit < /button></div >
+  )
+}
 
 }
 
 class BlogItem extends React.Component {
   render() {
     const {
-      author,
+      meta,
       image,
       text,
-      updated_at,
-      created_at,
       likes
     } = this.props;
     return React.createElement('div', {},
@@ -91,9 +89,9 @@ class BlogItem extends React.Component {
       React.createElement(Like, {
         count: likes
       }),
-      React.createElement(TextBox, {}, `${author.name}, ${author.age}`),
-      React.createElement(TextBox, {}, `Отредактировано ${updated_at}`),
-      React.createElement(TextBox, {}, `Создано ${updated_at}`),
+      React.createElement(TextBox, {}, `${meta.author.name}, ${meta.author.age}`),
+      React.createElement(TextBox, {}, `Отредактировано ${meta.updated_at}`),
+      React.createElement(TextBox, {}, `Создано ${meta.updated_at}`),
     )
   }
 }
@@ -115,9 +113,13 @@ BlogItem.defaultProps = {
 }
 
 BlogItem.propTypes = {
-  author: React.PropTypes.shape({
-    name: React.PropTypes.string,
-    age: React.PropTypes.string
+  meta: React.PropTypes.shape({
+    author: React.PropTypes.shape({
+      name: React.PropTypes.string,
+      age: React.PropTypes.string
+    }),
+    updated_at: React.PropTypes.string,
+    created_at: React.PropTypes.string
   }),
   text: React.PropTypes.string,
   image: React.PropTypes.shape({
@@ -125,17 +127,20 @@ BlogItem.propTypes = {
     height: React.PropTypes.number,
     url: React.PropTypes.string,
   }),
-  updated_at: React.PropTypes.string,
-  created_at: React.PropTypes.string
+  likes: React.PropTypes.number
 }
 
 
 
 ReactDOM.render(
   React.createElement('div', {}, React.createElement(BlogItem, {
-    author: {
-      name: "Finn",
-      age: "12"
+    meta: {
+      author: {
+        name: "Finn",
+        age: "12"
+      },
+      updated_at: moment().subtract(10, 'days').calendar(),
+      created_at: moment().subtract(10, 'days').calendar()
     },
     likes: 651,
     text: 'Fun will never end',
@@ -143,9 +148,7 @@ ReactDOM.render(
       width: 100,
       height: 100,
       url: 'http://i.cdn.turner.com/v5cache/CARTOON/site/Images/i70/adventure-time.png'
-    },
-    updated_at: moment().subtract(10, 'days').calendar(),
-    created_at: moment().subtract(10, 'days').calendar()
+    }
   })),
   document.getElementById("app")
 );
