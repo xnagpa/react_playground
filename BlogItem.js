@@ -62,12 +62,12 @@ class Like extends React.Component {
   }
 
   render() {
-    return ( < div > < p > {
+    return ( <div><p> {
         this.state.count
       }
-      likes < /p> < button onClick = {
+      likes</p>< button onClick = {
       this.handleClick
-    } > Like this shit < /button></div >
+    }> Like this shit </button></div>
   )
 }
 
@@ -89,44 +89,46 @@ class BlogItem extends React.Component {
       React.createElement(Like, {
         count: likes
       }),
-      React.createElement(TextBox, {}, `${meta.author.name}, ${meta.author.age}`),
-      React.createElement(TextBox, {}, `Отредактировано ${meta.updated_at}`),
-      React.createElement(TextBox, {}, `Создано ${meta.updated_at}`),
+      React.createElement(MetaData,{author: meta.author, updatedAt: meta.updatedAt, createdAt:  meta.createdAt })                       
     )
   }
 }
 
+class MetaData extends React.Component {
+  const { author, updatedAt, createdAt } = this.props;
+  render() {
+    return(
+      React.createElement('div', {},
+        React.createElement(TextBox, {}, author && `${author.name}, ${author.age}`),
+        React.createElement(TextBox, {}, updatedAt && `Отредактировано ${updatedAt}`),
+        React.createElement(TextBox, {}, createdAt && `Создано ${createdAt}`)
+      )
+    )
+  }
+}
+
+MetaData.propTypes = {
+  author: React.PropTypes.shape({
+      name: React.PropTypes.string,
+      age: React.PropTypes.string
+    }),
+  updatedAt: React.PropTypes.string,
+  createdAt: React.PropTypes.string
+}
+
 BlogItem.defaultProps = {
-  author: {
-    name: "Princess Bubblegum",
-    age: "200"
-  },
-  text: 'Wanna experiment all the things!',
-  image: {
-    width: 100,
-    height: 100,
-    url: 'http://vignette1.wikia.nocookie.net/adventuretimewithfinnandjake/images/6/6a/Vlcsnap-321831.png/revision/latest?cb=20110722230336'
-  },
-  updated_at: moment().subtract(10, 'days').calendar(),
-  created_at: moment().subtract(20, 'days').calendar(),
+  author: false,
+  text: '',
+  image: {},
+  updatedAt: '',
+  createdAt: '',
   likes: 0
 }
 
 BlogItem.propTypes = {
-  meta: React.PropTypes.shape({
-    author: React.PropTypes.shape({
-      name: React.PropTypes.string,
-      age: React.PropTypes.string
-    }),
-    updated_at: React.PropTypes.string,
-    created_at: React.PropTypes.string
-  }),
+  meta: MetaData.propTypes,
   text: React.PropTypes.string,
-  image: React.PropTypes.shape({
-    width: React.PropTypes.number,
-    height: React.PropTypes.number,
-    url: React.PropTypes.string,
-  }),
+  image: Image.propTypes,
   likes: React.PropTypes.number
 }
 
@@ -135,15 +137,12 @@ BlogItem.propTypes = {
 ReactDOM.render(
   React.createElement('div', {}, React.createElement(BlogItem, {
     meta: {
-      author: {
-        name: "Finn",
-        age: "12"
-      },
-      updated_at: moment().subtract(10, 'days').calendar(),
-      created_at: moment().subtract(10, 'days').calendar()
+      author: undefined,
+      updatedAt: moment().subtract(10, 'days').calendar(),
+      createdAt: moment().subtract(10, 'days').calendar()
     },
     likes: 651,
-    text: 'Fun will never end',
+    text: 'Fun will never end123',
     image: {
       width: 100,
       height: 100,
