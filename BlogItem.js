@@ -67,17 +67,21 @@ class Like extends React.Component {
         this.state.count
       }
       likes </p><button onClick = {
-        this.handleClick
-      }> Like this shit </button></div>
-    )
-  }
+      this.handleClick
+    }> Like this shit </button></div>
+  )
+}
 
 }
 
-class MetaData extends React.Component{
-  render(){
-    const { author, updatedAt, createdAt } = this.props;
-    return (React.createElement('div',{},
+class MetaData extends React.Component {
+  render() {
+    const {
+      author,
+      updatedAt,
+      createdAt
+    } = this.props;
+    return (React.createElement('div', {},
       author && React.createElement(TextBox, {}, `${author.name}, ${author.age}`),
       React.createElement(TextBox, {}, `Отредактировано ${updatedAt}`),
       React.createElement(TextBox, {}, `Создано ${createdAt}`),
@@ -96,9 +100,9 @@ MetaData.defaultProps = {
 
 MetaData.propTypes = {
   author: React.PropTypes.shape({
-      name: React.PropTypes.string,
-      age: React.PropTypes.string
-    }),
+    name: React.PropTypes.string,
+    age: React.PropTypes.string
+  }),
   updatedAt: React.PropTypes.string,
   createdAt: React.PropTypes.string
 }
@@ -119,9 +123,11 @@ class BlogItem extends React.Component {
       React.createElement(Like, {
         count: likes
       }),
-      meta && React.createElement(MetaData, {author: meta.author,
-                                     updatedAt: meta.updatedAt,
-                                     createdAt: meta.createdAt})
+      meta && React.createElement(MetaData, {
+        author: meta.author,
+        updatedAt: meta.updatedAt,
+        createdAt: meta.createdAt
+      })
     )
   }
 }
@@ -155,9 +161,9 @@ ReactDOM.render(
   React.createElement('div', {}, React.createElement(BlogItem, {
     meta: {
       author: {
-      name: "Finn",
-      age: "12"
-    },
+        name: "Finn",
+        age: "12"
+      },
       updatedAt: moment().subtract(10, 'days').calendar(),
       createdAt: moment().subtract(10, 'days').calendar()
     },
