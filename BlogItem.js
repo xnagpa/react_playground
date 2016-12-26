@@ -83,8 +83,8 @@ class MetaData extends React.Component {
     } = this.props;
     return (React.createElement('div', {},
       author && React.createElement(TextBox, {}, `${author.name}, ${author.age}`),
-      React.createElement(TextBox, {}, `Отредактировано ${updatedAt}`),
-      React.createElement(TextBox, {}, `Создано ${createdAt}`),
+      updatedAt && React.createElement(TextBox, {}, `Отредактировано ${updatedAt}`),
+      createdAt && React.createElement(TextBox, {}, `Создано ${createdAt}`),
     ))
   }
 }
