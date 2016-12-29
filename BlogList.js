@@ -2,6 +2,69 @@ const {
   bind
 } = _;
 
+blog_entries = [
+  {
+    id: 111,
+    meta: {
+      author: {
+        name: "Finn",
+        age: "12"
+      },
+      updatedAt: moment().subtract(10, 'days').calendar(),
+      createdAt: moment().subtract(10, 'days').calendar(),
+   },
+  image: {
+    src: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+    width: 100,
+    height: 100,
+    alt: 'Finn and Jake'
+  },
+  text: "Time for adventure!",
+  likes: 60
+},
+  {
+    id: 222,
+    meta: {
+      author: {
+        name: "Finn",
+        age: "12"
+      },
+      updatedAt: moment().subtract(10, 'days').calendar(),
+      createdAt: moment().subtract(10, 'days').calendar()
+   },
+
+  image: {
+    src: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+    width: 100,
+    height: 100,
+    alt: 'Finn and Jake'
+  },
+  text: "Explore the dungeon!",
+  likes: 45
+},
+  {
+    id: 333,
+    meta: {
+      author: {
+        name: "Finn",
+        age: "12"
+      },
+      updatedAt: moment().subtract(10, 'days').calendar(),
+      createdAt: moment().subtract(10, 'days').calendar()
+   },
+
+  image: {
+    src: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+    width: 100,
+    height: 100,
+    alt: 'Finn and Jake'
+  },
+  text: "Save princesses",
+  likes: 30
+},
+];
+
+
 class Image extends React.Component {
   render() {
     return React.createElement('img', {
@@ -50,21 +113,16 @@ class Like extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      count: props.count
-    }
     this.handleClick = bind(this.handleClick, this);
   }
 
   handleClick() {
-    this.setState({
-      count: this.state.count + 1
-    })
+    this.props.increaselikesHandler(this.props.id);
   }
 
   render() {
     return ( <div><p> {
-        this.state.count
+        this.props.count
       }
       likes </p><button onClick = {
       this.handleClick
@@ -107,13 +165,36 @@ MetaData.propTypes = {
   createdAt: React.PropTypes.string
 }
 
+class PieChart extends React.Component {
+  componentDidMount(){
+    this.chart = c3.generate({
+      bindto: ReactDOM.findDOMNode(this.refs.chart),
+      type : 'pie',
+      data: {
+        // iris data from R
+        columns: this.props.columns,
+        type : 'pie'
+    },
+
+    })
+  }
+
+  render(){
+    return(
+      <div ref="chart" />
+    )
+  }
+}
+
 class BlogItem extends React.Component {
   render() {
     const {
       meta,
       image,
       text,
-      likes
+      likes,
+      increaselikesHandler,
+      id
     } = this.props;
     return React.createElement('div', {},
       React.createElement(Image, {
@@ -121,7 +202,9 @@ class BlogItem extends React.Component {
       }),
       React.createElement(TextBox, {}, text),
       React.createElement(Like, {
-        count: likes
+        count: likes,
+        increaselikesHandler: increaselikesHandler,
+        id: id
       }),
       meta && React.createElement(MetaData, {
         author: meta.author,
@@ -155,65 +238,6 @@ BlogItem.propTypes = {
   likes: React.PropTypes.number
 }
 
-blog_entries = [
-  {
-    id: 111,
-    meta: {
-      author: {
-        name: "Finn",
-        age: "12"
-      },
-      updatedAt: moment().subtract(10, 'days').calendar(),
-      createdAt: moment().subtract(10, 'days').calendar()
-   },
-
-  image: {
-    src: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
-    width: 100,
-    height: 100,
-    alt: 'Finn and Jake'
-  },
-  text: "Adventure time, come on grab your friends"
-},
-  {
-    id: 222,
-    meta: {
-      author: {
-        name: "Finn",
-        age: "12"
-      },
-      updatedAt: moment().subtract(10, 'days').calendar(),
-      createdAt: moment().subtract(10, 'days').calendar()
-   },
-
-  image: {
-    src: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
-    width: 100,
-    height: 100,
-    alt: 'Finn and Jake'
-  },
-  text: "Adventure time, come on grab your friends"
-},
-  {
-    id: 333,
-    meta: {
-      author: {
-        name: "Finn",
-        age: "12"
-      },
-      updatedAt: moment().subtract(10, 'days').calendar(),
-      createdAt: moment().subtract(10, 'days').calendar()
-   },
-
-  image: {
-    src: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
-    width: 100,
-    height: 100,
-    alt: 'Finn and Jake'
-  },
-  text: "Adventure time, come on grab your friends"
-},
-];
 
 class BlogList extends React.Component {
   constructor(props) {
@@ -221,26 +245,47 @@ class BlogList extends React.Component {
     this.state = {
       blog_entries
     };
+    this.increaseLikesHandler = bind(this.increaseLikesHandler, this);
   }
+
+  setLikes(id) {
+    blog_entries = this.state.blog_entries
+    index = _.findIndex(blog_entries, function(o) { return o.id == id; });
+    blog_entries[index].likes += 1;
+    this.setState({blog_entries: blog_entries});
+  }
+
+  increaseLikesHandler(id){
+    this.setLikes(id);
+  }
+
 
   render() {
     return React.createElement(BlogListPresenter, {
-      blog_entries: this.state.blog_entries
+      blog_entries: this.state.blog_entries,
+      increaseLikesHandler: this.increaseLikesHandler
     })
   }
 }
 
 class BlogListPresenter extends React.Component {
   render() {
-    return React.createElement('ul', {},
+    let like_title = (_.map(this.props.blog_entries, (entry, key) => (
+      [entry.text, entry.likes]
+    )))
+    console.log(like_title)
+    return React.createElement('div',{},React.createElement('ul', {},
       _.map(this.props.blog_entries, (entry, key) => (
         React.createElement(BlogItem, {
           meta: entry.meta,
           image: entry.image,
           likes: entry.likes,
           text: entry.text,
-          key: entry.id
-        }))))
+          key: entry.id,
+          id: entry.id,
+          increaselikesHandler: this.props.increaseLikesHandler
+        })))),
+        React.createElement(PieChart,{ columns: like_title}))
   }
 }
 
@@ -249,25 +294,3 @@ ReactDOM.render(
   React.createElement(BlogList),
   document.getElementById("app")
 );
-
-
-// ReactDOM.render(
-//   React.createElement('div', {}, React.createElement(BlogItem, {
-//     meta: {
-//       author: {
-//         name: "Finn",
-//         age: "12"
-//       },
-//       updatedAt: moment().subtract(10, 'days').calendar(),
-//       createdAt: moment().subtract(10, 'days').calendar()
-//     },
-//     likes: 651,
-//     text: 'Fun will never end',
-//     image: {
-//       width: 100,
-//       height: 100,
-//       url: 'http://i.cdn.turner.com/v5cache/CARTOON/site/Images/i70/adventure-time.png'
-//     }
-//   })),
-//   document.getElementById("app")
-// );
