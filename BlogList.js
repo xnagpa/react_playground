@@ -171,7 +171,6 @@ class PieChart extends React.Component {
       bindto: ReactDOM.findDOMNode(this.refs.chart),
       type : 'pie',
       data: {
-        // iris data from R
         columns: this.props.columns,
         type : 'pie'
     },
@@ -268,12 +267,18 @@ class BlogList extends React.Component {
   }
 }
 
-class BlogListPresenter extends React.Component {
-  render() {
-    let like_title = (_.map(this.props.blog_entries, (entry, key) => (
+class PieChartPresenter extends React.Component {
+  render(){
+    let likeTitle = (_.map(this.props.blog_entries, (entry, key) => (
       [entry.text, entry.likes]
     )))
-    console.log(like_title)
+    return React.createElement(PieChart,{ columns: likeTitle})
+  }
+}
+
+
+class BlogListPresenter extends React.Component {
+  render() {
     return React.createElement('div',{},React.createElement('ul', {},
       _.map(this.props.blog_entries, (entry, key) => (
         React.createElement(BlogItem, {
@@ -285,7 +290,7 @@ class BlogListPresenter extends React.Component {
           id: entry.id,
           increaselikesHandler: this.props.increaseLikesHandler
         })))),
-        React.createElement(PieChart,{ columns: like_title}))
+        React.createElement(PieChartPresenter,{ blog_entries: this.props.blog_entries}))
   }
 }
 
