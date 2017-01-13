@@ -248,7 +248,7 @@ class BlogList extends React.Component {
   }
 
   setLikes(id) {
-    blog_entries = this.state.blog_entries
+    blog_entries = _.clone(this.state.blog_entries)
     index = _.findIndex(blog_entries, function(o) { return o.id == id; });
     blog_entries[index].likes += 1;
     this.setState({blog_entries: blog_entries});
