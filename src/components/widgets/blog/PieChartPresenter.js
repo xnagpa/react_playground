@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import c3 from 'c3';
 import _ from 'lodash';
 
 class PieChartPresenter extends React.Component {

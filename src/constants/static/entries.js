@@ -1,3 +1,4 @@
+import moment from 'moment';
 export const entries = [
   {
     id: 111,
