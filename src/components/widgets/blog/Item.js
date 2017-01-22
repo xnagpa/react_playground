@@ -21,8 +21,8 @@ class Item extends React.Component {
       React.createElement(TextBox, {}, text),
       React.createElement(Like, {
         count: likes,
-        increaselikesHandler: increaselikesHandler,
-        id: id
+        increaselikesHandler,
+        id
       }),
       meta && React.createElement(MetaData, {
         author: meta.author,
@@ -53,7 +53,9 @@ Item.propTypes = {
   meta: MetaData.propTypes,
   text: React.PropTypes.string,
   image: Image.propTypes,
-  likes: React.PropTypes.number
+  likes: React.PropTypes.number,
+  increaselikesHandler: React.PropTypes.func,
+  id: React.PropTypes.number
 };
 
 export default Item;

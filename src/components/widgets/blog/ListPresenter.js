@@ -6,7 +6,7 @@ import _ from 'lodash';
 class ListPresenter extends React.Component {
   render() {
     return React.createElement('div',{},React.createElement('ul', {},
-      _.map(this.props.blog_entries, (entry, key) => (
+      _.map(this.props.blogEntries, (entry) => (
         React.createElement(Item, {
           meta: entry.meta,
           image: entry.image,
@@ -16,7 +16,14 @@ class ListPresenter extends React.Component {
           id: entry.id,
           increaselikesHandler: this.props.increaseLikesHandler
         })))),
-        React.createElement(PieChartPresenter,{ blog_entries: this.props.blog_entries}));
+        React.createElement(PieChartPresenter,{
+          blogEntries: this.props.blogEntries}));
   }
 }
+
+ListPresenter.propTypes = {
+  blogEntries: React.PropTypes.array,
+  increaseLikesHandler: React.PropTypes.func
+};
+
 export default ListPresenter;

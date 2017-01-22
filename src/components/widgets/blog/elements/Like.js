@@ -13,11 +13,18 @@ class Like extends React.Component {
   }
 
   render() {
-    return ( <div><p> { this.props.count } likes </p>
+    return (<div><p> { this.props.count } likes </p>
       <button onClick = { this.handleClick }> Like this post </button>
-      </div> );
+      </div>);
   }
 
 }
+
+Like.propTypes = {
+  count: React.PropTypes.number,
+  increaselikesHandler: React.PropTypes.func,
+  id: React.PropTypes.number
+};
+
 
 export default Like;
