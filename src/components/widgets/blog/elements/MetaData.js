@@ -1,22 +1,20 @@
 import React from 'react';
 import TextBox from './TextBox';
-class MetaData extends React.Component {
-  render() {
-    const {
-      author,
-      updatedAt,
-      createdAt
-    } = this.props;
-    return (React.createElement('div', {},
-      author && React.createElement(TextBox, {},
-        `${author.name}, ${author.age}`),
-      updatedAt && React.createElement(TextBox, {},
-        `Отредактировано ${updatedAt}`),
-      createdAt && React.createElement(TextBox, {},
-        `Создано ${createdAt}`)
-    ));
-  }
-}
+const MetaData = (props) => {
+  const {
+    author,
+    updatedAt,
+    createdAt
+  } = props;
+  return (React.createElement('div', {},
+    author && React.createElement(TextBox, {},
+      `${author.name}, ${author.age}`),
+    updatedAt && React.createElement(TextBox, {},
+      `Отредактировано ${updatedAt}`),
+    createdAt && React.createElement(TextBox, {},
+      `Создано ${createdAt}`)
+  ));
+};
 
 MetaData.defaultProps = {
   author: {

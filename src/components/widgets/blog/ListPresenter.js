@@ -3,10 +3,9 @@ import Item from './Item';
 import PieChartPresenter from './PieChartPresenter';
 import _ from 'lodash';
 
-class ListPresenter extends React.Component {
-  render() {
-    return React.createElement('div',{},React.createElement('ul', {},
-      _.map(this.props.blogEntries, (entry) => (
+const ListPresenter = (props) => (
+      React.createElement('div',{},React.createElement('ul', {},
+      _.map(props.blogEntries, (entry) => (
         React.createElement(Item, {
           meta: entry.meta,
           image: entry.image,
@@ -14,12 +13,11 @@ class ListPresenter extends React.Component {
           text: entry.text,
           key: entry.id,
           id: entry.id,
-          increaselikesHandler: this.props.increaseLikesHandler
+          increaselikesHandler: props.increaseLikesHandler
         })))),
         React.createElement(PieChartPresenter,{
-          blogEntries: this.props.blogEntries}));
-  }
-}
+          blogEntries: props.blogEntries}))
+);
 
 ListPresenter.propTypes = {
   blogEntries: React.PropTypes.array,

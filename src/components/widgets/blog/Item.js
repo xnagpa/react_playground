@@ -4,34 +4,32 @@ import TextBox from './elements/TextBox';
 import Like from './elements/Like';
 import MetaData from './elements/MetaData';
 
-class Item extends React.Component {
-  render() {
-    const {
-      meta,
-      image,
-      text,
-      likes,
+const Item =  (props) => {
+  const {
+    meta,
+    image,
+    text,
+    likes,
+    increaselikesHandler,
+    id
+  } = props;
+  return React.createElement('div', {},
+    React.createElement(Image, {
+      src: image.src
+    }),
+    React.createElement(TextBox, {}, text),
+    React.createElement(Like, {
+      count: likes,
       increaselikesHandler,
       id
-    } = this.props;
-    return React.createElement('div', {},
-      React.createElement(Image, {
-        src: image.src
-      }),
-      React.createElement(TextBox, {}, text),
-      React.createElement(Like, {
-        count: likes,
-        increaselikesHandler,
-        id
-      }),
-      meta && React.createElement(MetaData, {
-        author: meta.author,
-        updatedAt: meta.updatedAt,
-        createdAt: meta.createdAt
-      })
-    );
-  }
-}
+    }),
+    meta && React.createElement(MetaData, {
+      author: meta.author,
+      updatedAt: meta.updatedAt,
+      createdAt: meta.createdAt
+    })
+  );
+};
 
 Item.defaultProps = {
   author: {

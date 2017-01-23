@@ -9,7 +9,7 @@ class Like extends React.Component {
   }
 
   handleClick() {
-    const func = this.props.increaselikesHandler(this.props.id);
+    this.props.increaselikesHandler(this.props.id);
   }
 
   render() {

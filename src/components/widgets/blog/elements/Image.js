@@ -1,12 +1,10 @@
 import React from 'react';
 
-class Image extends React.Component {
-  render() {
-    return React.createElement('img', {
-      src: this.props.src
-    });
-  }
-}
+const Image =  (props) => (
+  React.createElement('img', {
+    src: props.src
+  })
+);
 
 
 Image.propTypes = {

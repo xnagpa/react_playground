@@ -1,26 +1,22 @@
 import React from 'react';
 
-class TextBox extends React.Component {
-  render() {
-    return React.createElement(Span, null, this.props.children);
-  }
-}
+const TextBox =  (props) => (
+  React.createElement(Span, null, props.children)
+);
 
 TextBox.propTypes = {
   children: React.PropTypes.string
 };
 
 
-class Span extends React.Component {
-  render() {
-    return React.createElement('p', {
-      style: {
-        color: 'red'
-      }
-    },
-      this.props.children);
-  }
-}
+const Span =  (props) => (
+  React.createElement('p', {
+    style: {
+      color: 'red'
+    }
+  },
+    props.children)
+);
 
 Span.propTypes = {
   children: React.PropTypes.string

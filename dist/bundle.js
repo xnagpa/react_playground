@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f4573aed728c70f5eaad"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5ec8c7e274bbfd781050"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -69384,8 +69384,6 @@
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(6);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -69404,43 +69402,20 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ListPresenter = function (_React$Component) {
-	  _inherits(ListPresenter, _React$Component);
-
-	  function ListPresenter() {
-	    _classCallCheck(this, ListPresenter);
-
-	    return _possibleConstructorReturn(this, (ListPresenter.__proto__ || Object.getPrototypeOf(ListPresenter)).apply(this, arguments));
-	  }
-
-	  _createClass(ListPresenter, [{
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      return _react2.default.createElement('div', {}, _react2.default.createElement('ul', {}, _lodash2.default.map(this.props.blogEntries, function (entry) {
-	        return _react2.default.createElement(_Item2.default, {
-	          meta: entry.meta,
-	          image: entry.image,
-	          likes: entry.likes,
-	          text: entry.text,
-	          key: entry.id,
-	          id: entry.id,
-	          increaselikesHandler: _this2.props.increaseLikesHandler
-	        });
-	      })), _react2.default.createElement(_PieChartPresenter2.default, {
-	        blogEntries: this.props.blogEntries }));
-	    }
-	  }]);
-
-	  return ListPresenter;
-	}(_react2.default.Component);
+	var ListPresenter = function ListPresenter(props) {
+	  return _react2.default.createElement('div', {}, _react2.default.createElement('ul', {}, _lodash2.default.map(props.blogEntries, function (entry) {
+	    return _react2.default.createElement(_Item2.default, {
+	      meta: entry.meta,
+	      image: entry.image,
+	      likes: entry.likes,
+	      text: entry.text,
+	      key: entry.id,
+	      id: entry.id,
+	      increaselikesHandler: props.increaseLikesHandler
+	    });
+	  })), _react2.default.createElement(_PieChartPresenter2.default, {
+	    blogEntries: props.blogEntries }));
+	};
 
 	ListPresenter.propTypes = {
 	  blogEntries: _react2.default.PropTypes.array,
@@ -69458,8 +69433,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(6);
 
@@ -69483,48 +69456,26 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var Item = function Item(props) {
+	  var meta = props.meta,
+	      image = props.image,
+	      text = props.text,
+	      likes = props.likes,
+	      increaselikesHandler = props.increaselikesHandler,
+	      id = props.id;
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Item = function (_React$Component) {
-	  _inherits(Item, _React$Component);
-
-	  function Item() {
-	    _classCallCheck(this, Item);
-
-	    return _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).apply(this, arguments));
-	  }
-
-	  _createClass(Item, [{
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props,
-	          meta = _props.meta,
-	          image = _props.image,
-	          text = _props.text,
-	          likes = _props.likes,
-	          increaselikesHandler = _props.increaselikesHandler,
-	          id = _props.id;
-
-	      return _react2.default.createElement('div', {}, _react2.default.createElement(_Image2.default, {
-	        src: image.src
-	      }), _react2.default.createElement(_TextBox2.default, {}, text), _react2.default.createElement(_Like2.default, {
-	        count: likes,
-	        increaselikesHandler: increaselikesHandler,
-	        id: id
-	      }), meta && _react2.default.createElement(_MetaData2.default, {
-	        author: meta.author,
-	        updatedAt: meta.updatedAt,
-	        createdAt: meta.createdAt
-	      }));
-	    }
-	  }]);
-
-	  return Item;
-	}(_react2.default.Component);
+	  return _react2.default.createElement('div', {}, _react2.default.createElement(_Image2.default, {
+	    src: image.src
+	  }), _react2.default.createElement(_TextBox2.default, {}, text), _react2.default.createElement(_Like2.default, {
+	    count: likes,
+	    increaselikesHandler: increaselikesHandler,
+	    id: id
+	  }), meta && _react2.default.createElement(_MetaData2.default, {
+	    author: meta.author,
+	    updatedAt: meta.updatedAt,
+	    createdAt: meta.createdAt
+	  }));
+	};
 
 	Item.defaultProps = {
 	  author: {
@@ -69563,40 +69514,17 @@
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(6);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Image = function (_React$Component) {
-	  _inherits(Image, _React$Component);
-
-	  function Image() {
-	    _classCallCheck(this, Image);
-
-	    return _possibleConstructorReturn(this, (Image.__proto__ || Object.getPrototypeOf(Image)).apply(this, arguments));
-	  }
-
-	  _createClass(Image, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement('img', {
-	        src: this.props.src
-	      });
-	    }
-	  }]);
-
-	  return Image;
-	}(_react2.default.Component);
+	var Image = function Image(props) {
+	  return _react2.default.createElement('img', {
+	    src: props.src
+	  });
+	};
 
 	Image.propTypes = {
 	  src: _react2.default.PropTypes.string
@@ -69618,65 +69546,27 @@
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(6);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var TextBox = function (_React$Component) {
-	  _inherits(TextBox, _React$Component);
-
-	  function TextBox() {
-	    _classCallCheck(this, TextBox);
-
-	    return _possibleConstructorReturn(this, (TextBox.__proto__ || Object.getPrototypeOf(TextBox)).apply(this, arguments));
-	  }
-
-	  _createClass(TextBox, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(Span, null, this.props.children);
-	    }
-	  }]);
-
-	  return TextBox;
-	}(_react2.default.Component);
+	var TextBox = function TextBox(props) {
+	  return _react2.default.createElement(Span, null, props.children);
+	};
 
 	TextBox.propTypes = {
 	  children: _react2.default.PropTypes.string
 	};
 
-	var Span = function (_React$Component2) {
-	  _inherits(Span, _React$Component2);
-
-	  function Span() {
-	    _classCallCheck(this, Span);
-
-	    return _possibleConstructorReturn(this, (Span.__proto__ || Object.getPrototypeOf(Span)).apply(this, arguments));
-	  }
-
-	  _createClass(Span, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement('p', {
-	        style: {
-	          color: 'red'
-	        }
-	      }, this.props.children);
+	var Span = function Span(props) {
+	  return _react2.default.createElement('p', {
+	    style: {
+	      color: 'red'
 	    }
-	  }]);
-
-	  return Span;
-	}(_react2.default.Component);
+	  }, props.children);
+	};
 
 	Span.propTypes = {
 	  children: _react2.default.PropTypes.string
@@ -69731,7 +69621,7 @@
 	  _createClass(Like, [{
 	    key: 'handleClick',
 	    value: function handleClick() {
-	      var func = this.props.increaselikesHandler(this.props.id);
+	      this.props.increaselikesHandler(this.props.id);
 	    }
 	  }, {
 	    key: 'render',
@@ -69777,8 +69667,6 @@
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(6);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -69789,35 +69677,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var MetaData = function MetaData(props) {
+	  var author = props.author,
+	      updatedAt = props.updatedAt,
+	      createdAt = props.createdAt;
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var MetaData = function (_React$Component) {
-	  _inherits(MetaData, _React$Component);
-
-	  function MetaData() {
-	    _classCallCheck(this, MetaData);
-
-	    return _possibleConstructorReturn(this, (MetaData.__proto__ || Object.getPrototypeOf(MetaData)).apply(this, arguments));
-	  }
-
-	  _createClass(MetaData, [{
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props,
-	          author = _props.author,
-	          updatedAt = _props.updatedAt,
-	          createdAt = _props.createdAt;
-
-	      return _react2.default.createElement('div', {}, author && _react2.default.createElement(_TextBox2.default, {}, author.name + ', ' + author.age), updatedAt && _react2.default.createElement(_TextBox2.default, {}, '\u041E\u0442\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043E ' + updatedAt), createdAt && _react2.default.createElement(_TextBox2.default, {}, '\u0421\u043E\u0437\u0434\u0430\u043D\u043E ' + createdAt));
-	    }
-	  }]);
-
-	  return MetaData;
-	}(_react2.default.Component);
+	  return _react2.default.createElement('div', {}, author && _react2.default.createElement(_TextBox2.default, {}, author.name + ', ' + author.age), updatedAt && _react2.default.createElement(_TextBox2.default, {}, '\u041E\u0442\u0440\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043E ' + updatedAt), createdAt && _react2.default.createElement(_TextBox2.default, {}, '\u0421\u043E\u0437\u0434\u0430\u043D\u043E ' + createdAt));
+	};
 
 	MetaData.defaultProps = {
 	  author: {
@@ -69875,34 +69741,19 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var PieChartPresenter = function (_React$Component) {
-	  _inherits(PieChartPresenter, _React$Component);
-
-	  function PieChartPresenter() {
-	    _classCallCheck(this, PieChartPresenter);
-
-	    return _possibleConstructorReturn(this, (PieChartPresenter.__proto__ || Object.getPrototypeOf(PieChartPresenter)).apply(this, arguments));
-	  }
-
-	  _createClass(PieChartPresenter, [{
-	    key: 'render',
-	    value: function render() {
-	      var likeTitle = _lodash2.default.map(this.props.blogEntries, function (entry) {
-	        return [entry.text, entry.likes];
-	      });
-	      return _react2.default.createElement(PieChart, { columns: likeTitle });
-	    }
-	  }]);
-
-	  return PieChartPresenter;
-	}(_react2.default.Component);
+	var PieChartPresenter = function PieChartPresenter(props) {
+	  var likeTitle = _lodash2.default.map(props.blogEntries, function (entry) {
+	    return [entry.text, entry.likes];
+	  });
+	  _react2.default.createElement(PieChart, { columns: likeTitle });
+	};
 
 	PieChartPresenter.propTypes = {
 	  blogEntries: _react2.default.PropTypes.array
 	};
 
-	var PieChart = function (_React$Component2) {
-	  _inherits(PieChart, _React$Component2);
+	var PieChart = function (_React$Component) {
+	  _inherits(PieChart, _React$Component);
 
 	  function PieChart() {
 	    _classCallCheck(this, PieChart);
