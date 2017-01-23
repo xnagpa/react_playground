@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9ccfe88609cc6b1a200c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f4573aed728c70f5eaad"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -37279,8 +37279,6 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var bind = _lodash2.default;
-
 	var BlogList = function (_React$Component) {
 	  _inherits(BlogList, _React$Component);
 
@@ -37292,7 +37290,7 @@
 	    _this.state = {
 	      blogEntries: _entries.entries
 	    };
-	    _this.increaseLikesHandler = bind(_this.increaseLikesHandler, _this);
+	    _this.increaseLikesHandler = _lodash2.default.bind(_this.increaseLikesHandler, _this);
 	    return _this;
 	  }
 
@@ -54421,7 +54419,7 @@
 /* 431 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -54438,57 +54436,57 @@
 	  id: 111,
 	  meta: {
 	    author: {
-	      name: "Finn",
-	      age: "12"
+	      name: 'Finn',
+	      age: '12'
 	    },
 	    updatedAt: (0, _moment2.default)().subtract(10, 'days').calendar(),
 	    createdAt: (0, _moment2.default)().subtract(10, 'days').calendar()
 	  },
 	  image: {
-	    src: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+	    src: 'http://cdn-static.sidereel.com/tv_shows/' + '4657/giant_2x/14582706_AdventureTime_SC1.jpg',
 	    width: 100,
 	    height: 100,
 	    alt: 'Finn and Jake'
 	  },
-	  text: "Time for adventure!",
+	  text: 'Time for adventure!',
 	  likes: 60
 	}, {
 	  id: 222,
 	  meta: {
 	    author: {
-	      name: "Finn",
-	      age: "12"
+	      name: 'Finn',
+	      age: '12'
 	    },
 	    updatedAt: (0, _moment2.default)().subtract(10, 'days').calendar(),
 	    createdAt: (0, _moment2.default)().subtract(10, 'days').calendar()
 	  },
 
 	  image: {
-	    src: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+	    src: 'http://cdn-static.sidereel.com/tv_shows' + '/4657/giant_2x/14582706_AdventureTime_SC1.jpg',
 	    width: 100,
 	    height: 100,
 	    alt: 'Finn and Jake'
 	  },
-	  text: "Explore the dungeon!",
+	  text: 'Explore the dungeon!',
 	  likes: 45
 	}, {
 	  id: 333,
 	  meta: {
 	    author: {
-	      name: "Finn",
-	      age: "12"
+	      name: 'Finn',
+	      age: '12'
 	    },
 	    updatedAt: (0, _moment2.default)().subtract(10, 'days').calendar(),
 	    createdAt: (0, _moment2.default)().subtract(10, 'days').calendar()
 	  },
 
 	  image: {
-	    src: "http://cdn-static.sidereel.com/tv_shows/4657/giant_2x/14582706_AdventureTime_SC1.jpg",
+	    src: 'http://cdn-static.sidereel.com/tv_shows' + '/4657/giant_2x/14582706_AdventureTime_SC1.jpg',
 	    width: 100,
 	    height: 100,
 	    alt: 'Finn and Jake'
 	  },
-	  text: "Save princesses",
+	  text: 'Save princesses',
 	  likes: 30
 	}];
 
@@ -69426,7 +69424,7 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      return _react2.default.createElement('div', {}, _react2.default.createElement('ul', {}, _lodash2.default.map(this.props.blogEntries, function (entry, key) {
+	      return _react2.default.createElement('div', {}, _react2.default.createElement('ul', {}, _lodash2.default.map(this.props.blogEntries, function (entry) {
 	        return _react2.default.createElement(_Item2.default, {
 	          meta: entry.meta,
 	          image: entry.image,
@@ -69436,12 +69434,18 @@
 	          id: entry.id,
 	          increaselikesHandler: _this2.props.increaseLikesHandler
 	        });
-	      })), _react2.default.createElement(_PieChartPresenter2.default, { blogEntries: this.props.blogEntries }));
+	      })), _react2.default.createElement(_PieChartPresenter2.default, {
+	        blogEntries: this.props.blogEntries }));
 	    }
 	  }]);
 
 	  return ListPresenter;
 	}(_react2.default.Component);
+
+	ListPresenter.propTypes = {
+	  blogEntries: _react2.default.PropTypes.array,
+	  increaseLikesHandler: _react2.default.PropTypes.func
+	};
 
 	exports.default = ListPresenter;
 
@@ -69539,10 +69543,12 @@
 	};
 
 	Item.propTypes = {
-	  meta: _MetaData2.default.propTypes,
+	  meta: _react2.default.PropTypes.object,
 	  text: _react2.default.PropTypes.string,
-	  image: _Image2.default.propTypes,
-	  likes: _react2.default.PropTypes.number
+	  image: _react2.default.PropTypes.object,
+	  likes: _react2.default.PropTypes.number,
+	  increaselikesHandler: _react2.default.PropTypes.func,
+	  id: _react2.default.PropTypes.number
 	};
 
 	exports.default = Item;
@@ -69725,7 +69731,7 @@
 	  _createClass(Like, [{
 	    key: 'handleClick',
 	    value: function handleClick() {
-	      this.props.increaselikesHandler(this.props.id);
+	      var func = this.props.increaselikesHandler(this.props.id);
 	    }
 	  }, {
 	    key: 'render',
@@ -69742,7 +69748,8 @@
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { onClick: this.handleClick },
+	          { className: 'uk-button uk-button-default',
+	            onClick: this.handleClick },
 	          ' Like this post '
 	        )
 	      );
@@ -69751,6 +69758,12 @@
 
 	  return Like;
 	}(_react2.default.Component);
+
+	Like.propTypes = {
+	  count: _react2.default.PropTypes.number,
+	  increaselikesHandler: _react2.default.PropTypes.func,
+	  id: _react2.default.PropTypes.number
+	};
 
 	exports.default = Like;
 
@@ -69884,6 +69897,10 @@
 	  return PieChartPresenter;
 	}(_react2.default.Component);
 
+	PieChartPresenter.propTypes = {
+	  blogEntries: _react2.default.PropTypes.array
+	};
+
 	var PieChart = function (_React$Component2) {
 	  _inherits(PieChart, _React$Component2);
 
@@ -69915,6 +69932,10 @@
 
 	  return PieChart;
 	}(_react2.default.Component);
+
+	PieChart.propTypes = {
+	  columns: _react2.default.PropTypes.array
+	};
 
 	exports.default = PieChartPresenter;
 

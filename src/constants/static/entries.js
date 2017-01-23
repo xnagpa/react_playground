@@ -13,8 +13,8 @@ export const entries = [
         .calendar(),
     },
     image: {
-      src: 'http://cdn-static.sidereel.com/tv_shows\
-        /4657/giant_2x/14582706_AdventureTime_SC1.jpg',
+      src: 'http://cdn-static.sidereel.com/tv_shows/' +
+        '4657/giant_2x/14582706_AdventureTime_SC1.jpg',
       width: 100,
       height: 100,
       alt: 'Finn and Jake'
@@ -36,8 +36,8 @@ export const entries = [
     },
 
     image: {
-      src: 'http://cdn-static.sidereel.com/tv_shows\
-        /4657/giant_2x/14582706_AdventureTime_SC1.jpg',
+      src: 'http://cdn-static.sidereel.com/tv_shows' +
+        '/4657/giant_2x/14582706_AdventureTime_SC1.jpg',
       width: 100,
       height: 100,
       alt: 'Finn and Jake'
@@ -59,8 +59,8 @@ export const entries = [
     },
 
     image: {
-      src: 'http://cdn-static.sidereel.com/tv_shows\
-        /4657/giant_2x/14582706_AdventureTime_SC1.jpg',
+      src: 'http://cdn-static.sidereel.com/tv_shows' +
+        '/4657/giant_2x/14582706_AdventureTime_SC1.jpg',
       width: 100,
       height: 100,
       alt: 'Finn and Jake'

@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'lodash';
-const bind = _;
 import { entries as blogEntries } from '../constants/static/entries';
 import ListPresenter from './widgets/blog/ListPresenter';
 
@@ -10,7 +9,7 @@ class BlogList extends React.Component {
     this.state = {
       blogEntries
     };
-    this.increaseLikesHandler = bind(this.increaseLikesHandler, this);
+    this.increaseLikesHandler = _.bind(this.increaseLikesHandler, this);
   }
 
   setLikes(id) {

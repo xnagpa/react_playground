@@ -9,12 +9,13 @@ class Like extends React.Component {
   }
 
   handleClick() {
-    this.props.increaselikesHandler(this.props.id);
+    const func = this.props.increaselikesHandler(this.props.id);
   }
 
   render() {
     return (<div><p> { this.props.count } likes </p>
-      <button onClick = { this.handleClick }> Like this post </button>
+      <button className='uk-button uk-button-default'
+        onClick = { this.handleClick }> Like this post </button>
       </div>);
   }
 

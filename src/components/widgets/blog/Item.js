@@ -50,9 +50,9 @@ Item.defaultProps = {
 };
 
 Item.propTypes = {
-  meta: MetaData.propTypes,
+  meta: React.PropTypes.object,
   text: React.PropTypes.string,
-  image: Image.propTypes,
+  image: React.PropTypes.object,
   likes: React.PropTypes.number,
   increaselikesHandler: React.PropTypes.func,
   id: React.PropTypes.number
