@@ -1,11 +1,12 @@
-import React from 'react';
 import Item from './Item';
 import PieChartPresenter from './PieChartPresenter';
-import _ from 'lodash';
+import { map } from 'lodash/collection';
+import  React from 'react';
+const { DOM } = React;
 
 const ListPresenter = (props) => (
-      React.createElement('div',{},React.createElement('ul', {},
-      _.map(props.blogEntries, (entry) => (
+      DOM.div({}, DOM.ul({},
+      map(props.blogEntries, (entry) => (
         React.createElement(Item, {
           meta: entry.meta,
           image: entry.image,
@@ -16,12 +17,13 @@ const ListPresenter = (props) => (
           increaselikesHandler: props.increaseLikesHandler
         })))),
         React.createElement(PieChartPresenter,{
-          blogEntries: props.blogEntries}))
+          likeTitles: props.likeTitles}))
 );
 
 ListPresenter.propTypes = {
   blogEntries: React.PropTypes.array,
-  increaseLikesHandler: React.PropTypes.func
+  increaseLikesHandler: React.PropTypes.func,
+  likeTitles: React.PropTypes.array
 };
 
 export default ListPresenter;

@@ -19,6 +19,12 @@ class BlogList extends React.Component {
     this.setState({ blogEntries });
   }
 
+  likeTitles(entries) {
+    return (_.map(entries, (entry) => (
+      [entry.text, entry.likes]
+    )));
+  }
+
   increaseLikesHandler(id) {
     this.setLikes(id);
   }
@@ -27,6 +33,7 @@ class BlogList extends React.Component {
   render() {
     return React.createElement(ListPresenter, {
       blogEntries: this.state.blogEntries,
+      likeTitles: this.likeTitles(this.state.blogEntries),
       increaseLikesHandler: this.increaseLikesHandler
     });
   }

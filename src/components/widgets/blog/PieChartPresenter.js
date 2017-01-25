@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import c3 from 'c3';
-import _ from 'lodash';
 
-class PieChartPresenter extends React.Component {
-  render() {
-    const likeTitle = (_.map(this.props.blogEntries, (entry) => (
-      [entry.text, entry.likes]
-    )));
-    return React.createElement(PieChart,{ columns: likeTitle});
-  }
-}
+const PieChartPresenter = (props) => (
+  React.createElement(PieChart,{ columns: props.likeTitles})
+);
 
 PieChartPresenter.propTypes = {
   blogEntries: React.PropTypes.array,
+  likeTitles: React.PropTypes.array
 };
 
 class PieChart extends React.Component {
@@ -27,6 +22,16 @@ class PieChart extends React.Component {
       },
 
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props != nextProps) {
+      this.chart.load({ columns: this.props.columns });
+    }
+  }
+
+  componentWillUnmount() {
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this.refs.chart));
   }
 
   render() {
