@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import c3 from 'c3';
+const { DOM } = React;
 
 const PieChartPresenter = (props) => (
   React.createElement(PieChart,{ columns: props.likeTitles})
@@ -36,7 +37,7 @@ class PieChart extends React.Component {
 
   render() {
     return (
-      <div ref="chart" />
+      DOM.div({ ref: 'chart'})
     );
   }
 }
