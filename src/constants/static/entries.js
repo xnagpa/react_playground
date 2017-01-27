@@ -1,7 +1,7 @@
 import moment from 'moment';
 export const entries = [
   {
-    id: 111,
+    id: 0,
     meta: {
       author: {
         name: 'Finn',
@@ -23,7 +23,7 @@ export const entries = [
     likes: 60
   },
   {
-    id: 222,
+    id: 1,
     meta: {
       author: {
         name: 'Finn',
@@ -46,7 +46,7 @@ export const entries = [
     likes: 45
   },
   {
-    id: 333,
+    id: 2,
     meta: {
       author: {
         name: 'Finn',

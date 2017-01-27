@@ -1,4 +1,4 @@
-import Item from './Item';
+import BlogItem from './BlogItem';
 import PieChartPresenter from './PieChartPresenter';
 import { map } from 'lodash/collection';
 import  React from 'react';
@@ -8,7 +8,7 @@ import { assign, pick } from 'lodash';
 const ListPresenter = (props) => (
       DOM.div({}, DOM.ul({},
       map(props.blogEntries, (entry) => (
-        React.createElement(Item,
+        React.createElement(BlogItem,
           assign({}, pick(entry, ['meta', 'image', 'likes', 'text', 'id']),
             {increaselikesHandler: props.increaseLikesHandler, key: entry.id,})
         )))),

@@ -4,7 +4,7 @@ import TextBox from './elements/TextBox';
 import Like from './elements/Like';
 import MetaData from './elements/MetaData';
 
-const Item =  (props) => {
+const BlogItem =  (props) => {
   const {
     meta,
     image,
@@ -13,6 +13,7 @@ const Item =  (props) => {
     increaselikesHandler,
     id
   } = props;
+  debugger;
   return React.createElement('div', {},
     React.createElement(Image, {
       src: image.src
@@ -31,7 +32,7 @@ const Item =  (props) => {
   );
 };
 
-Item.defaultProps = {
+BlogItem.defaultProps = {
   meta: MetaData.defaultProps,
   text: '',
   image: Image.defaultProps,
@@ -39,7 +40,7 @@ Item.defaultProps = {
   id: 0
 };
 
-Item.propTypes = {
+BlogItem.propTypes = {
   meta: React.PropTypes.shape(MetaData.propTypes),
   text: React.PropTypes.string,
   image: React.PropTypes.shape(Image.propTypes),
@@ -48,4 +49,4 @@ Item.propTypes = {
   id: React.PropTypes.number
 };
 
-export default Item;
+export default BlogItem;
