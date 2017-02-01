@@ -1,15 +1,28 @@
 import React from 'react';
 import _ from 'lodash';
-import { entries as blogEntries } from '../constants/static/entries';
+//import { entries as blogEntries } from '../constants/static/entries';
 import ListPresenter from './widgets/blog/ListPresenter';
+import request from 'superagent';
 
 class BlogList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      blogEntries
+      blogEntries: []
     };
     this.increaseLikesHandler = _.bind(this.increaseLikesHandler, this);
+  }
+
+  fetchPosts() {
+    request.get(
+      'http://localhost:3001/',
+      {},
+      (err, res) => this.setState ({ blogEntries: res.body })
+    );
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
   }
 
   setLikes(id) {

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { Segment, Header, Container } from 'semantic-ui-react';
+import { Segment, Header, Container, Button } from 'semantic-ui-react';
+import Link from 'components/elements/Link';
 
 const MainLayout = ({ children }) => (
   <Container>
@@ -15,7 +16,9 @@ MainLayout.propTypes = {
 
 const Logo = () => (
   <Segment>
-    <Header>2ch filial header</Header>
+    <Header>
+      <Link to='/'>2ch11 filial header</Link>
+    </Header>
   </Segment>
 );
 

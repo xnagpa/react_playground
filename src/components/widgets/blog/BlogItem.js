@@ -3,6 +3,8 @@ import Image from './elements/Image';
 import TextBox from './elements/TextBox';
 import Like from './elements/Like';
 import MetaData from './elements/MetaData';
+import Link from 'components/elements/Link';
+import { postsPath } from 'helpers/routes';
 
 const BlogItem =  (props) => {
   const {
@@ -13,11 +15,12 @@ const BlogItem =  (props) => {
     increaselikesHandler,
     id
   } = props;
-  debugger;
+
   return React.createElement('div', {},
     React.createElement(Image, {
       src: image.src
     }),
+    React.createElement(Link, {to: postsPath(id)}, text),
     React.createElement(TextBox, {}, text),
     React.createElement(Like, {
       count: likes,

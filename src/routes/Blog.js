@@ -2,6 +2,7 @@ import MainLayout from 'components/layouts/MainLayout';
 
 import BlogList from 'components/BlogList';
 import Post from 'components/Post';
+import { postsPath } from 'helpers/routes';
 
 const Index = {
   path: '/',
@@ -10,7 +11,7 @@ const Index = {
 
 const PostRoute = {
   component: Post,
-  path: '/posts/:id'
+  path: postsPath()
 };
 
 export default{
