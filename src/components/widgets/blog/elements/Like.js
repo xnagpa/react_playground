@@ -1,14 +1,13 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 
-import _ from 'lodash';
-const { DOM } = React;
+import { bind } from 'lodash';
 
 class Like extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleClick = _.bind(this.handleClick, this);
+    this.handleClick = bind(this.handleClick, this);
   }
 
   handleClick() {
@@ -16,10 +15,12 @@ class Like extends React.Component {
   }
 
   render() {
-    return (DOM.div({},
-      DOM.p({}, `${this.props.count} likes`),
-      React.createElement(Button, {onClick: this.handleClick}, 'Like this post')
-    ));
+    return <div>
+      <p>
+        {`${this.props.count} likes`}
+      </p>
+      <Button onClick={this.handleClick}> 'Like this post'</Button>
+    </div>;
   }
 
 }

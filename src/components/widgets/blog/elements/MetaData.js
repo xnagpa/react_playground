@@ -6,6 +6,7 @@ const MetaData = (props) => {
     updatedAt,
     createdAt
   } = props;
+  //Не знаю как опционально выводить jsx. author && <TextBox>...</TextBox>?
   return (React.createElement('div', {},
     author && React.createElement(TextBox, {},
       `${author.name}, ${author.age}`),

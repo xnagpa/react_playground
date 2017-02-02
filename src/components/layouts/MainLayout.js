@@ -24,7 +24,7 @@ const GoBackButton = () => (
 const Logo = () => (
   <Segment>
     <Header>
-      <Link to='/'>2ch11 filial header</Link>
+      <Link to='/'>I like React and JSX, and HAAATE React.createElement</Link>
     </Header>
     <HeaderList />
   </Segment>

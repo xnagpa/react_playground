@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import c3 from 'c3';
 
 const PieChartPresenter = (props) => (
-  React.createElement(PieChart,{ columns: props.likeTitles})
+  <PieChart columns= {props.likeTitles}/>
 );
 
 PieChartPresenter.propTypes = {

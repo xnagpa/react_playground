@@ -23,7 +23,8 @@ const BlogItem =  (props) => {
         <Link to={ postsPath(id) }>{ text }</Link>
       </Item.Header>
       <Item.Description>
-        <Image src='http://semantic-ui.com/images/wireframe/short-paragraph.png'/>
+        <Image
+          src='http://semantic-ui.com/images/wireframe/short-paragraph.png'/>
         <TextBox>{ text }</TextBox>
       </Item.Description>
       <Item.Meta>

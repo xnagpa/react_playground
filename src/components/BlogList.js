@@ -1,6 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
-//import { entries as blogEntries } from '../constants/static/entries';
+import {clone, findIndex, map, bind} from 'lodash';
 import ListPresenter from './widgets/blog/ListPresenter';
 import PaginationMenu from './widgets/blog/elements/PaginationMenu';
 import request from 'superagent';
@@ -11,10 +10,10 @@ class BlogList extends React.Component {
     this.state = {
       blogEntries: this.fetchPosts()
     };
-    this.increaseLikesHandler = _.bind(this.increaseLikesHandler, this);
-    this.handlePaginationClick = _.bind(this.handlePaginationClick, this);
-    this.fetchPosts = _.bind(this.fetchPosts, this);
-    this.likeTitles = _.bind(this.likeTitles, this);
+    this.increaseLikesHandler = bind(this.increaseLikesHandler, this);
+    this.handlePaginationClick = bind(this.handlePaginationClick, this);
+    this.fetchPosts = bind(this.fetchPosts, this);
+    this.likeTitles = bind(this.likeTitles, this);
   }
 
   fetchPosts(page) {
@@ -34,19 +33,15 @@ class BlogList extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.fetchPosts();
-  // }
-
   setLikes(id) {
-    const blogEntries = _.clone(this.state.blogEntries);
-    const index = _.findIndex(blogEntries, function(o) { return o.id == id; });
+    const blogEntries = clone(this.state.blogEntries);
+    const index = findIndex(blogEntries, function(o) { return o.id == id; });
     blogEntries[index].likes += 1;
     this.setState({ blogEntries });
   }
 
   likeTitles(entries) {
-    return (_.map(entries, (entry) => (
+    return (map(entries, (entry) => (
       [entry.text, entry.likes]
     )));
   }

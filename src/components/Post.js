@@ -17,8 +17,9 @@ class Post extends React.Component {
   }
 
   fetchPost() {
+    const query = `http://localhost:3001${this.props.location.pathname}`;
     request.get(
-      'http://localhost:3001' + this.props.location.pathname,
+      query,
       {},
       (err, res) => this.setState ({ entry: res.body })
     );
@@ -40,6 +41,12 @@ class Post extends React.Component {
 
 Post.propTypes = {
   params: PropTypes.object
+};
+
+Post.propTypes = {
+  params: PropTypes.object,
+  location: PropTypes.object,
+  pathname: PropTypes.string
 };
 
 export default Post;

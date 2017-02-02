@@ -19,12 +19,19 @@ class PaginationMenu extends Component {
     const { activeItem } = this.state;
     return (
       <Menu pagination>
-        <Menu.Item name='1' active={activeItem === '1'} onClick={this.handleItemClick} />
-        <Menu.Item name='2' active={activeItem === '2'} onClick={this.handleItemClick} />
-        <Menu.Item name='3' active={activeItem === '3'} onClick={this.handleItemClick} />
+        <Menu.Item name='1' active={activeItem === '1'}
+          onClick={this.handleItemClick} />
+        <Menu.Item name='2' active={activeItem === '2'}
+          onClick={this.handleItemClick} />
+        <Menu.Item name='3' active={activeItem === '3'}
+          onClick={this.handleItemClick} />
       </Menu>
-    )
+    );
   }
 }
+
+PaginationMenu.propTypes = {
+  handlePaginationClick: React.PropTypes.func
+};
 
 export default PaginationMenu;
