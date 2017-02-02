@@ -24,6 +24,7 @@ const Logo = () => (
   <Segment>
     <Header>
       <Link to='/'>2ch11 filial header</Link>
+      <Link to='/about'>About</Link>
     </Header>
   </Segment>
 );
