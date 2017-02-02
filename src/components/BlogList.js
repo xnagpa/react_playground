@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 //import { entries as blogEntries } from '../constants/static/entries';
 import ListPresenter from './widgets/blog/ListPresenter';
+import PaginationMenu from './widgets/blog/elements/PaginationMenu';
 import request from 'superagent';
 
 class BlogList extends React.Component {
@@ -11,14 +12,24 @@ class BlogList extends React.Component {
       blogEntries: []
     };
     this.increaseLikesHandler = _.bind(this.increaseLikesHandler, this);
+    this.handlePaginationClick = _.bind(this.handlePaginationClick, this);
   }
 
-  fetchPosts() {
-    request.get(
-      'http://localhost:3001/',
-      {},
-      (err, res) => this.setState ({ blogEntries: res.body })
-    );
+  fetchPosts(page) {
+    if(page == undefined){
+      request.get(
+        'http://localhost:3001/posts/pages/1',
+        {},
+        (err, res) => this.setState ({ blogEntries: res.body })
+      );
+    }
+    else {
+      request.get(
+        `http://localhost:3001/posts/pages/${page}`,
+        {},
+        (err, res) => this.setState ({ blogEntries: res.body })
+      );
+    }
   }
 
   componentDidMount() {
@@ -42,13 +53,23 @@ class BlogList extends React.Component {
     this.setLikes(id);
   }
 
+  handlePaginationClick(page) {
+    this.fetchPosts(page);
+  }
+
 
   render() {
-    return React.createElement(ListPresenter, {
-      blogEntries: this.state.blogEntries,
-      likeTitles: this.likeTitles(this.state.blogEntries),
-      increaseLikesHandler: this.increaseLikesHandler
-    });
+    return React.createElement('div',{},
+      React.createElement(ListPresenter, {
+        blogEntries: this.state.blogEntries,
+        likeTitles: this.likeTitles(this.state.blogEntries),
+        increaseLikesHandler: this.increaseLikesHandler
+      }),
+      React.createElement(PaginationMenu, {
+        handlePaginationClick: this.handlePaginationClick,
+        count: 10
+      })
+    );
   }
 }
 
