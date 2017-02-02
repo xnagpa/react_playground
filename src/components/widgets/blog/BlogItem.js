@@ -42,9 +42,7 @@ const BlogItem =  (props) => {
 };
 
 BlogItem.defaultProps = {
-  meta: MetaData.defaultProps,
   text: '',
-  image: Image.defaultProps,
   likes: 0,
   id: 0
 };
