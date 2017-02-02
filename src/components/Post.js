@@ -29,13 +29,12 @@ class Post extends React.Component {
   }
 
   render() {
-    return (React.createElement(Item.Group, {},
-      React.createElement(BlogItem,
-        assign({}, pick(this.state.entry,
-          ['meta', 'image', 'likes', 'text', 'id']),
-          {key: this.state.entry.id})
-      )
-    ));
+    const parameters = assign({}, pick(this.state.entry,
+                 ['meta', 'image', 'likes', 'text', 'id']),
+                 {key: this.state.entry.id});
+    return <Item.Group>
+             <BlogItem {...parameters}/>
+           </Item.Group>;
   }
 }
 

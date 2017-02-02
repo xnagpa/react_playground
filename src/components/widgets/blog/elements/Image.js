@@ -1,9 +1,8 @@
 import React from 'react';
+import { Image as SemanticImage } from 'semantic-ui-react';
 
 const Image =  (props) => (
-  React.createElement('img', {
-    src: props.src
-  })
+  <SemanticImage src={props.src}/>
 );
 
 

@@ -59,17 +59,13 @@ class BlogList extends React.Component {
 
 
   render() {
-    return React.createElement('div',{},
-      React.createElement(ListPresenter, {
-        blogEntries: this.state.blogEntries,
-        likeTitles: this.likeTitles(this.state.blogEntries),
-        increaseLikesHandler: this.increaseLikesHandler
-      }),
-      React.createElement(PaginationMenu, {
-        handlePaginationClick: this.handlePaginationClick,
-        count: 10
-      })
-    );
+    return <div>
+      <ListPresenter blogEntries={ this.state.blogEntries }
+                     likeTitles={ this.likeTitles(this.state.blogEntries)}
+                     increaseLikesHandler={ this.increaseLikesHandler }
+      />
+      <PaginationMenu handlePaginationClick={ this.handlePaginationClick }/>
+    </div>;
   }
 }
 

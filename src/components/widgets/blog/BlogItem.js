@@ -5,6 +5,7 @@ import Like from './elements/Like';
 import MetaData from './elements/MetaData';
 import Link from 'components/elements/Link';
 import { postsPath } from 'helpers/routes';
+import { Item } from 'semantic-ui-react';
 
 const BlogItem =  (props) => {
   const {
@@ -15,24 +16,28 @@ const BlogItem =  (props) => {
     increaselikesHandler,
     id
   } = props;
-
-  return React.createElement('div', {},
-    React.createElement(Image, {
-      src: image.src
-    }),
-    React.createElement(Link, {to: postsPath(id)}, text),
-    React.createElement(TextBox, {}, text),
-    React.createElement(Like, {
-      count: likes,
-      increaselikesHandler,
-      id
-    }),
-    meta && React.createElement(MetaData, {
-      author: meta.author,
-      updatedAt: meta.updatedAt,
-      createdAt: meta.createdAt
-    })
-  );
+  return <Item>
+    <Item.Image size='medium' src={ image.src } />
+    <Item.Content>
+      <Item.Header as='a'>
+        <Link to={ postsPath(id) }>{ text }</Link>
+      </Item.Header>
+      <Item.Description>
+        <Image src='http://semantic-ui.com/images/wireframe/short-paragraph.png'/>
+        <TextBox>{ text }</TextBox>
+      </Item.Description>
+      <Item.Meta>
+        <MetaData author={meta.author}
+        updatedAt= { meta.updatedAt }
+        createdAt= {meta.createdAt}/>
+      </Item.Meta>
+      <Item.Extra>
+        <Like count= {likes}
+              increaselikesHandler={increaselikesHandler}
+              id = { id }/>
+      </Item.Extra>
+    </Item.Content>
+  </Item>;
 };
 
 BlogItem.defaultProps = {

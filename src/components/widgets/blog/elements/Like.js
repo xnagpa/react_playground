@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react';
 
 import _ from 'lodash';
 const { DOM } = React;
