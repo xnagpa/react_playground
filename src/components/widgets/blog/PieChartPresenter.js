@@ -26,7 +26,7 @@ class PieChart extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props != nextProps) {
-      this.chart.load({ columns: this.props.columns });
+      this.chart.load({ columns: nextProps.columns });
     }
   }
 

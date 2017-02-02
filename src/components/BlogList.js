@@ -9,14 +9,16 @@ class BlogList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      blogEntries: []
+      blogEntries: this.fetchPosts()
     };
     this.increaseLikesHandler = _.bind(this.increaseLikesHandler, this);
     this.handlePaginationClick = _.bind(this.handlePaginationClick, this);
+    this.fetchPosts = _.bind(this.fetchPosts, this);
+    this.likeTitles = _.bind(this.likeTitles, this);
   }
 
   fetchPosts(page) {
-    if(page == undefined){
+    if (page == undefined) {
       request.get(
         'http://localhost:3001/posts/pages/1',
         {},
@@ -32,9 +34,9 @@ class BlogList extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.fetchPosts();
-  }
+  // componentDidMount() {
+  //   this.fetchPosts();
+  // }
 
   setLikes(id) {
     const blogEntries = _.clone(this.state.blogEntries);

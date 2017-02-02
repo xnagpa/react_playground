@@ -5,18 +5,18 @@ import { map } from 'lodash/collection';
 import  React from 'react';
 
 const ListPresenter = (props) => (
-      <div>
-        <Grid>
-          <Grid.Column key={0} width={12}>
-            <Item.Group>
-              {generateElements(props)}
-            </Item.Group>
-          </Grid.Column>
-          <Grid.Column key={1} width={4}>
-            <PieChartPresenter likeTitles={props.likeTitles}/>
-          </Grid.Column>
-        </Grid>
-      </div>
+    <div>
+      <Grid>
+        <Grid.Column key={0} width={12}>
+          <Item.Group>
+            {generateElements(props)}
+          </Item.Group>
+        </Grid.Column>
+        <Grid.Column key={1} width={4}>
+          <PieChartPresenter likeTitles={props.likeTitles}/>
+        </Grid.Column>
+      </Grid>
+    </div>
 );
 
 const generateElements = (props) => (

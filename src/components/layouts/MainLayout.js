@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
-import { Segment, Header, Container, Button } from 'semantic-ui-react';
+import { Segment, Header, Container, Button} from 'semantic-ui-react';
 import Link from 'components/elements/Link';
+import HeaderList from 'components/widgets/blog/elements/HeaderList';
 import history from 'helpers/history';
 
 const MainLayout = ({ children }) => (
@@ -24,8 +25,8 @@ const Logo = () => (
   <Segment>
     <Header>
       <Link to='/'>2ch11 filial header</Link>
-      <Link to='/about'>About</Link>
     </Header>
+    <HeaderList />
   </Segment>
 );
 
