@@ -8,6 +8,8 @@ import { assign, pick } from 'lodash';
 
 import request from 'superagent';
 
+const host = 'http://localhost:3001';
+
 class Post extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class Post extends React.Component {
   }
 
   fetchPost() {
-    const query = `http://localhost:3001${this.props.location.pathname}`;
+    const query = `${host}${this.props.location.pathname}`;
     request.get(
       query,
       {},

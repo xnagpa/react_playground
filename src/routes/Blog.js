@@ -3,7 +3,8 @@ import MainLayout from 'components/layouts/MainLayout';
 import BlogList from 'components/BlogList';
 import Post from 'components/Post';
 import About from 'components/About';
-import { postsPath } from 'helpers/routes';
+import { postsPath } from 'helpers/routes/index';
+import { aboutPath } from 'helpers/routes/about';
 
 const Index = {
   path: '/',
@@ -11,7 +12,7 @@ const Index = {
 };
 
 const AboutRoute = {
-  path: '/about',
+  path: aboutPath(),
   component: About
 };
 

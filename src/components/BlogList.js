@@ -16,21 +16,12 @@ class BlogList extends React.Component {
     this.likeTitles = bind(this.likeTitles, this);
   }
 
-  fetchPosts(page) {
-    if (page == undefined) {
-      request.get(
-        'http://localhost:3001/posts/pages/1',
-        {},
-        (err, res) => this.setState ({ blogEntries: res.body })
-      );
-    }
-    else {
-      request.get(
-        `http://localhost:3001/posts/pages/${page}`,
-        {},
-        (err, res) => this.setState ({ blogEntries: res.body })
-      );
-    }
+  fetchPosts(page = 1) {
+    request.get(
+      `http://localhost:3001/posts/pages/${page}`,
+      {},
+      (err, res) => this.setState ({ blogEntries: res.body })
+    );
   }
 
   setLikes(id) {
