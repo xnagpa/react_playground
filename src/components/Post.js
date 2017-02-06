@@ -8,7 +8,7 @@ import { assign, pick } from 'lodash';
 
 import request from 'superagent';
 
-const host = 'http://localhost:3001';
+import  { host } from 'constants/static/api';
 
 class Post extends React.Component {
   constructor(props) {

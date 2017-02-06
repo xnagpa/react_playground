@@ -3,6 +3,7 @@ import {clone, findIndex, map, bind} from 'lodash';
 import ListPresenter from './widgets/blog/ListPresenter';
 import PaginationMenu from './widgets/blog/elements/PaginationMenu';
 import request from 'superagent';
+import  { host } from 'constants/static/api';
 
 class BlogList extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class BlogList extends React.Component {
 
   fetchPosts(page = 1) {
     request.get(
-      `http://localhost:3001/posts/pages/${page}`,
+      `${host}/posts/pages/${page}`,
       {},
       (err, res) => this.setState ({ blogEntries: res.body })
     );
