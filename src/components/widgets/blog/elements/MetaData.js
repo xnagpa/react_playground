@@ -6,14 +6,13 @@ const MetaData = (props) => {
     updatedAt,
     createdAt
   } = props;
-  return (React.createElement('div', {},
-    author && React.createElement(TextBox, {},
-      `${author.name}, ${author.age}`),
-    updatedAt && React.createElement(TextBox, {},
-      `Отредактировано ${updatedAt}`),
-    createdAt && React.createElement(TextBox, {},
-      `Создано ${createdAt}`)
-  ));
+  return (
+    <div>
+      { author && <TextBox>{`${author.name}, ${author.age}`}</TextBox> }
+      { updatedAt && <TextBox>{`Отредактировано ${updatedAt}`}</TextBox> }
+      { createdAt && <TextBox>{`Создано ${createdAt}`}</TextBox> }
+    </div>
+  );
 };
 
 MetaData.defaultProps = {

@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import c3 from 'c3';
-const { DOM } = React;
 
 const PieChartPresenter = (props) => (
-  React.createElement(PieChart,{ columns: props.likeTitles})
+  <PieChart columns= {props.likeTitles}/>
 );
 
 PieChartPresenter.propTypes = {
@@ -27,7 +26,7 @@ class PieChart extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props != nextProps) {
-      this.chart.load({ columns: this.props.columns });
+      this.chart.load({ columns: nextProps.columns });
     }
   }
 
@@ -37,7 +36,7 @@ class PieChart extends React.Component {
 
   render() {
     return (
-      DOM.div({ ref: 'chart'})
+      <div ref='chart'/>
     );
   }
 }

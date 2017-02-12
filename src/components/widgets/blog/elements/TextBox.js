@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TextBox =  (props) => (
-  React.createElement(Span, null, props.children)
+  <Span>{ props.children }</Span>
 );
 
 TextBox.propTypes = {
@@ -10,12 +10,9 @@ TextBox.propTypes = {
 
 
 const Span =  (props) => (
-  React.createElement('p', {
-    style: {
-      color: 'red'
-    }
-  },
-    props.children)
+  <p style={{
+    color: 'red'
+  }}>{props.children}</p>
 );
 
 Span.propTypes = {
