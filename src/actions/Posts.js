@@ -23,8 +23,8 @@ export function fetchPosts() {
     dispatch(requestPosts());
     return request
       .get(`${host}/`)
-      .end((err, response) => {
-        err ? dispatch(errorPosts()) : dispatch(receivePosts(response.body));
-      });
+      .end((err, response) => (
+        err ? dispatch(errorPosts()) : dispatch(receivePosts(response.body))
+      ));
   };
 }

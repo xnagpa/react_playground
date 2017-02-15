@@ -5,5 +5,4 @@ import DevTools from 'containers/DevTools';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk),
   DevTools.instrument()));
-
 export default store;

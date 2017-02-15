@@ -6,5 +6,4 @@ const stateToProps = (state) => ({
   isFetching: state.posts.isFetching,
   error: state.posts.error
 });
-
 export default connect(stateToProps)(ListPresenter);

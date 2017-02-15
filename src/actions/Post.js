@@ -25,8 +25,8 @@ export function fetchPost(id) {
     dispatch(requestPost(id));
     return request
       .get(`${host}/posts/${id}`)
-      .end((err, response) => {
-        err ? dispatch(errorPost()) : dispatch(receivePost(response.body));
-      });
+      .end((err, response) => (
+        err ? dispatch(errorPost()) : dispatch(receivePost(response.body))
+      ));
   };
 }

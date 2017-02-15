@@ -1,7 +1,5 @@
 import { assign } from 'lodash/object';
 
-import * as types from 'constants/actionTypes/PostsActionTypes';
-
 const initialState = {
   isFetching: false,
   error: false,
