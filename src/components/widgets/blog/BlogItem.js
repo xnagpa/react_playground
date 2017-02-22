@@ -17,7 +17,7 @@ const BlogItem =  (props) => {
     id
   } = props;
   return <Item>
-    <Item.Image size='medium' src={ image.src } />
+    { image && <Item.Image size='medium' src={ image.src } />}
     <Item.Content>
       <Item.Header as='a'>
         <Link to={ postsPath(id) }>{ text }</Link>
@@ -28,9 +28,9 @@ const BlogItem =  (props) => {
         <TextBox>{ text }</TextBox>
       </Item.Description>
       <Item.Meta>
-        <MetaData author={meta.author}
+        { meta && <MetaData author={meta.author}
         updatedAt= { meta.updatedAt }
-        createdAt= {meta.createdAt}/>
+        createdAt= {meta.createdAt}/> }
       </Item.Meta>
       <Item.Extra>
         <Like count= {likes}

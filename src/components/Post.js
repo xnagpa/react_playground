@@ -4,51 +4,14 @@ import BlogItem from 'components/widgets/blog/BlogItem';
 
 import { Item } from 'semantic-ui-react';
 
-import { assign, pick } from 'lodash';
-
-import request from 'superagent';
-
-import  { host } from 'constants/static/api';
-
-class Post extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      entry: {}
-    };
-  }
-
-  fetchPost() {
-    const query = `${host}${this.props.location.pathname}`;
-    request.get(
-      query,
-      {},
-      (err, res) => this.setState ({ entry: res.body })
-    );
-  }
-
-  componentDidMount() {
-    this.fetchPost();
-  }
-
-  render() {
-    const parameters = assign({}, pick(this.state.entry,
-                 ['meta', 'image', 'likes', 'text', 'id']),
-                 {key: this.state.entry.id});
-    return <Item.Group>
-             <BlogItem {...parameters}/>
-           </Item.Group>;
-  }
-}
-
-Post.propTypes = {
-  params: PropTypes.object
+const Post = (props) => {
+  return <Item.Group>
+          { props.item && <BlogItem {...props.item}/> }
+         </Item.Group>;
 };
 
 Post.propTypes = {
-  params: PropTypes.object,
-  location: PropTypes.object,
-  pathname: PropTypes.string
+  item: PropTypes.object
 };
 
 export default Post;
