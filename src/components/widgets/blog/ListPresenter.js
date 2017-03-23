@@ -14,7 +14,9 @@ const ListPresenter = (props) => (
             <BlogItemList items={props.items}/> }
         </Item.Group>
         <Item.Group>
-          <PaginationMenu handlePaginationClick={() => alert(props)}/>
+          { props.items && props.items.length > 0 && <PaginationMenu
+            handlePaginationClick={() => alert(props)}
+            totalCount = {props.items[0].totalCount}/> }
         </Item.Group>
       </Grid.Column>
       <Grid.Column key={1} width={4}>
