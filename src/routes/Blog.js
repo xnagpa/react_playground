@@ -3,12 +3,22 @@ import MainLayout from 'components/layouts/MainLayout';
 import About from 'components/About';
 import { postsPath } from 'helpers/routes/index';
 import { aboutPath } from 'helpers/routes/about';
+import { paginationPath } from 'helpers/routes/pagination';
 
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
+import { fetchPage } from 'actions/Pagination';
 
 import PostContainer from 'containers/PostContainer';
 import PostsContainer from 'containers/PostsContainer';
+
+const Pagination = {
+  path: paginationPath(),
+  component: PostsContainer,
+  prepareData: (store, query, params) => (
+    store.dispatch(fetchPage(params.page))
+  )
+};
 
 const Index = {
   path: '/',
@@ -37,6 +47,7 @@ export default{
   childRoutes: [
     Index,
     PostRoute,
-    AboutRoute
+    AboutRoute,
+    Pagination
   ]
 };

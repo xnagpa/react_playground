@@ -1,4 +1,5 @@
 import BlogItemList from './BlogItemList';
+import PaginationMenu from './elements/PaginationMenu';
 import PieChartPresenter from './PieChartPresenter';
 import { Grid, Item } from 'semantic-ui-react';
 import { map } from 'lodash/collection';
@@ -11,6 +12,11 @@ const ListPresenter = (props) => (
         <Item.Group>
           { props.items &&
             <BlogItemList items={props.items}/> }
+        </Item.Group>
+        <Item.Group>
+          { props.items && props.items.length > 0 && <PaginationMenu
+            handlePaginationClick={() => alert(props)}
+            totalCount = {props.items[0].totalCount}/> }
         </Item.Group>
       </Grid.Column>
       <Grid.Column key={1} width={4}>
