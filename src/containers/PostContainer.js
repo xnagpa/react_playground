@@ -1,4 +1,4 @@
-import Post from 'components/Post';
+import Post from 'components/views/Post';
 import { connect } from 'react-redux';
 import { assign, pick } from 'lodash';
 const stateToProps = (state) => {

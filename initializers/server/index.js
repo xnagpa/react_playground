@@ -5,7 +5,7 @@ require('babel-core/register');
 
 require.extensions['css'] = () => {
   return;
-}
+};
 
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
@@ -20,4 +20,4 @@ const application = express();
 application.set('views', __dirname);
 application.set('view engine', 'ejs');
 application.get('*', require('./render').default);
-application.listen(port, () => (console.log(`Server listening on ${port}`))); 
+application.listen(port, () => (console.log(`Server listening on ${port}`)));
