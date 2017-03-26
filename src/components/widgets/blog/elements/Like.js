@@ -11,7 +11,8 @@ class Like extends React.Component {
   }
 
   handleClick() {
-    this.props.increaselikesHandler(this.props.id);
+    // Что мне здесь писать?
+    // как заставить action выполняться? 
   }
 
   render() {

@@ -4,6 +4,7 @@ import About from 'components/About';
 import { postsPath } from 'helpers/routes/index';
 import { aboutPath } from 'helpers/routes/about';
 import { paginationPath } from 'helpers/routes/pagination';
+import { likePath } from 'helpers/routes/like';
 
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
@@ -11,6 +12,14 @@ import { fetchPage } from 'actions/Pagination';
 
 import PostContainer from 'containers/PostContainer';
 import PostsContainer from 'containers/PostsContainer';
+
+const Like = {
+  path: likePath(),
+  component: PostsContainer,
+  prepareData: (store, query, params) => (
+    store.dispatch(fetchPage(params.page))
+  )
+};
 
 const Pagination = {
   path: paginationPath(),
@@ -48,6 +57,7 @@ export default{
     Index,
     PostRoute,
     AboutRoute,
-    Pagination
+    Pagination,
+    Like
   ]
 };
