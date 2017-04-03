@@ -11,6 +11,9 @@ export default function(store, state) {
 
   const prepareDataFns = compact(map(routes, route => route.prepareData));
 
+  if (!state)
+    return;
+
   return map(
     prepareDataFns,
     prepareData => prepareData(store, query, params, location)

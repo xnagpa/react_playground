@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 const store = createStore(window.__INITIAL_STATE__);
 
 function historyCb(location) {
-  match({ location, routes }, (error, redirect, state) => {
+  match({ routes, location }, (error, redirect, state) => {
     if (!error && !redirect) {
       prepareData(store, state);
     }

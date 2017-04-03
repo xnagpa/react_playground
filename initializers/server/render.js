@@ -15,24 +15,32 @@ const store = createStore();
 
 export default (req, res) => {
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) =>
-    Promise.all(compact(prepareData(store, renderProps))).then(() => {
-      const initialState = JSON.stringify(store.getState());
+  {
+    if(error){
+      res.status(500).send(error.message);
+    }
+    else if (redirectLocation){
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+    }
+    else if (renderProps){
+      Promise.all(compact(prepareData(store, renderProps))).then(() => {
+        const initialState = JSON.stringify(store.getState());
+        const content = ReactDOMServer.renderToString(
+          React.createElement(
+            Provider,
+            { store },
+            React.createElement(RouterContext, renderProps)
+          )
+        );
 
-      const content = ReactDOMServer.renderToString(
-        React.createElement(
-          Provider,
-          { store },
-          React.createElement(RouterContext, renderProps)
-        )
-      );
+        const head = Helmet.rewind();
 
-      const head = Helmet.rewind();
-
-      res.status(200);
-      res.render(
-        'index',
-        { initialState, content, head }
-      );
-    })
-  );
+        res.status(200);
+        res.render(
+          'index',
+          { initialState, content, head }
+        );
+      });
+    }
+  });
 };
