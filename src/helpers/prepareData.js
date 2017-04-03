@@ -13,6 +13,6 @@ export default function(store, state) {
 
   return map(
     prepareDataFns,
-    prepareData => prepareData(store, query, params, location));
-
+    prepareData => prepareData(store, query, params, location)
+  );
 }

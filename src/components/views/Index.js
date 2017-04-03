@@ -5,15 +5,15 @@ const Index = ({ items }) => (
   <div>
     <ListPresenter items={items}/>
     <Helmet
-      title = 'Список чертовых постов'
+      title = 'Список чертовых постов '
     />
   </div>
 );
 
-ListPresenter.propTypes = {
-  items: ListPresenter.PropTypes.array,
-  increaseLikesHandler: ListPresenter.PropTypes.func,
-  likeTitles: ListPresenter.PropTypes.array
+Index.propTypes = {
+  items: ListPresenter.propTypes.array,
+  increaseLikesHandler: ListPresenter.propTypes.func,
+  likeTitles: ListPresenter.propTypes.array
 };
 
 export default Index;

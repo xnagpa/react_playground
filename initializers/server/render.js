@@ -32,7 +32,7 @@ export default (req, res) => {
       res.render(
         'index',
         { initialState, content, head }
-    );
+      );
     })
   );
 };

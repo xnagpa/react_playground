@@ -6,18 +6,27 @@ require('babel-core/register');
 require.extensions['css'] = () => {
   return;
 };
-
-const webpack = require('webpack');
-const webpackDevServer = require('webpack-dev-server');
-
-const config = require('../../webpack.config.js');
-
-const host = 'localhost';
 const port = 3000;
 
 const express = require('express');
 const application = express();
 application.set('views', __dirname);
 application.set('view engine', 'ejs');
+
+const webpack = require('webpack');
+const config = require('../../webpack.config.js').default;
+const webpackDev = require('webpack-dev-middleware');
+const webpackHot = require('webpack-hot-middleware');
+const compiler = webpack(config);
+application.use(
+  webpackDev(compiler,{
+    hot: true,
+    publicPath: config.output.publicPath,
+    stats: { colors: true }
+  })
+);
+
+application.use(webpackHot(compiler));
+
 application.get('*', require('./render').default);
-application.listen(port, () => (console.log(`Server listening on ${port}`)));
+application.listen(port, () => {console.log(`Server listening on ${port}`);});

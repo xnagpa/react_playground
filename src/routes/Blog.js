@@ -1,6 +1,6 @@
 import MainLayout from 'components/layouts/MainLayout';
 
-import About from 'components/About';
+import About from 'components/views/About';
 import { postsPath } from 'helpers/routes/index';
 import { aboutPath } from 'helpers/routes/about';
 import initialLoad from 'helpers/initialLoad';
