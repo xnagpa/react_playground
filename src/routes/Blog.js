@@ -1,5 +1,6 @@
 import MainLayout from 'components/layouts/MainLayout';
 
+import initialLoad from 'helpers/initialLoad';
 import About from 'components/About';
 import { postsPath } from 'helpers/routes/index';
 import { aboutPath } from 'helpers/routes/about';
@@ -15,17 +16,19 @@ import PostsContainer from 'containers/PostsContainer';
 const Pagination = {
   path: paginationPath(),
   component: PostsContainer,
-  prepareData: (store, query, params) => (
-    store.dispatch(fetchPage(params.page))
-  )
+  prepareData: (store, query, params) => {
+    if (initialLoad()) return;
+    return store.dispatch(fetchPage(params.page));
+  }
 };
 
 const Index = {
   path: '/',
   component: PostsContainer,
-  prepareData: (store) => (
-    store.dispatch(fetchPosts())
-  )
+  prepareData: (store) => {
+    if (initialLoad()) return;
+    return store.dispatch(fetchPosts());
+  }
 };
 
 const AboutRoute = {
@@ -37,9 +40,10 @@ const AboutRoute = {
 const PostRoute = {
   component: PostContainer,
   path: postsPath(),
-  prepareData: (store, query, params) => (
-    store.dispatch(fetchPost(params.id))
-  )
+  prepareData: (store, query, params) => {
+    if (initialLoad()) return;
+    return store.dispatch(fetchPost(params.id));
+  }
 };
 
 export default{

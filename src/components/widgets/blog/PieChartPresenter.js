@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import c3 from 'c3';
+
 
 const PieChartPresenter = (props) => (
   <PieChart columns= {props.likeTitles}/>
@@ -13,6 +13,7 @@ PieChartPresenter.propTypes = {
 
 class PieChart extends React.Component {
   componentDidMount() {
+    const c3 = require('c3');
     this.chart = c3.generate({
       bindto: ReactDOM.findDOMNode(this.refs.chart),
       type : 'pie',
