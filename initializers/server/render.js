@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
+import Helmet from 'react-helmet';
 
 import { compact } from  'lodash/array';
 
@@ -23,11 +24,13 @@ export default (req, res ) => {
         )
       );
 
+      const head = Helmet.rewind();
+
       const initialState = JSON.stringify(store.getState());
       res.status(200);
       res.render(
         'index',
-        { initialState, content }
+        { initialState, content, head}
       );
     });
   });

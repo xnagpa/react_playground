@@ -1,4 +1,4 @@
-import ListPresenter from 'components/widgets/blog/ListPresenter';
+import Index from 'components/views/Index';
 import { connect } from 'react-redux';
 
 const stateToProps = (state) => {
@@ -17,4 +17,4 @@ const stateToProps = (state) => {
     };
   }
 };
-export default connect(stateToProps)(ListPresenter);
+export default connect(stateToProps)(Index);
