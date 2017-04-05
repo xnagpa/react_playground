@@ -4,10 +4,12 @@ import React from 'react';
 import { Router, match, browserHistory } from 'react-router';
 import routes from 'routes';
 import prepareData from 'helpers/prepareData';
-import store from 'store';
+import createStore from 'store';
 import { Provider } from 'react-redux';
 import DevTools from 'containers/DevTools';
 import ReactDOM from 'react-dom';
+
+const store = createStore(window.__INITIAL_STATE__ );
 
 function historyCb(location) {
   match({ location, routes }, (error, redirect, state) => {
@@ -30,6 +32,10 @@ const App = () => (
 );
 
 ReactDOM.render(<DevTools store={ store }/>,
-  document.getElementById('devtools'));
+  document.getElementById('devtools'),
+  () => {
+    delete window.__INITIAL_STATE__;
+  }
+);
 
 export default App;
