@@ -13,8 +13,10 @@ import prepareData from 'helpers/prepareData';
 
 const store = createStore();
 
-export default (req, res ) => {
+export default (req, res) => {
   match({ routes, location: req.url}, (error, redirectLocation, renderProps) => {
+
+    console.log(req.url);
     Promise.all(compact(prepareData(store, renderProps))).then(() => {
       const content = ReactDOMServer.renderToString(
         React.createElement(
@@ -30,7 +32,7 @@ export default (req, res ) => {
       res.status(200);
       res.render(
         'index',
-        { initialState, content, head}
+        { initialState, content, head }
       );
     });
   });

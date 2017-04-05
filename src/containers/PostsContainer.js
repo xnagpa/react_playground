@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 const stateToProps = (state) => {
   if (state.pagination.entries.length == 0) {
+    console.log("ENTRIES!!!!");
     return {
       items: state.posts.entries,
       isFetching: state.posts.isFetching,
@@ -10,6 +11,7 @@ const stateToProps = (state) => {
     };
   }
   else {
+    console.log("PAGINATION!!!");
     return {
       items: state.pagination.entries,
       isFetching: state.posts.isFetching,
