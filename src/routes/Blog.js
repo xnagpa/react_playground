@@ -16,9 +16,17 @@ import PostsContainer from 'containers/PostsContainer';
 
 const Like = {
   path: likePath(),
-  component: PostContainer,
-  prepareData: (store, query, params) => (
-    store.dispatch(like(params.post))
+  component: PostContainer
+  // prepareData: (store, query, params) => {
+  //   store.dispatch(like(params.post));
+  // }
+};
+
+const LikePosts = {
+  path: likePath(),
+  component: PostsContainer,
+  prepareData: (store) => (
+    store.dispatch(fetchPosts())
   )
 };
 
@@ -59,6 +67,7 @@ export default{
     PostRoute,
     AboutRoute,
     Pagination,
-    Like
+    Like,
+    LikePosts
   ]
 };

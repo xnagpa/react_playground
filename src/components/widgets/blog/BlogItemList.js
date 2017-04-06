@@ -11,7 +11,8 @@ const BlogItemList = (props) => {
   return <ul>
   { map(items, (entry) => (
     <BlogItem meta={entry.meta} image={entry.image} likes={entry.likes}
-            text={entry.text} id={entry.id} key={entry.id}/>
+            text={entry.text} id={entry.id} key={entry.id}
+            increaseLikesHandler={props.increaseLikesHandler}/>
   )) }
   </ul>;
 };

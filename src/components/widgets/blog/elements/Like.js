@@ -14,17 +14,6 @@ class Like extends React.Component {
     this.props.increaseLikesHandler(this.props.id);
   }
 
-  componentWillReceiveProps(nextProps) {
-    //nextProps не изменяется
-    // console.log(`Will receive props ${this.props != nextProps}`);
-    // console.log(`this.props id ${this.props.id} count ${this.props.count} handler=${this.props.increaseLikesHandler}`);
-    // console.log(`this.props id ${nextProps.id} count ${nextProps.count} handler=${nextProps.increaseLikesHandler}`);
-  }
-
-  componentDidMount() {
-    console.log(`Component did mount`);
-  }
-
 
   render() {
     return <div>

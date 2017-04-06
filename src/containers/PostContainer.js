@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { assign, pick, isEmpty } from 'lodash';
 import like from 'actions/Like';
 const stateToProps = (state) => {
+  //
   const likeParameters = state.like.entry ? assign({}, pick(state.like.entry,
             ['meta', 'image', 'likes', 'text', 'id']),
             {key: state.like.entry.id}) : {};
@@ -21,7 +22,7 @@ const stateToProps = (state) => {
 
 const actionsToProps = (dispatch) => {
   return {
-    increaselikesHandler: (id) => {
+    increaseLikesHandler: (id) => {
       dispatch(like(id));
     }
   };
