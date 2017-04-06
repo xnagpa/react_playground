@@ -1,15 +1,30 @@
 import Post from 'components/Post';
 import { connect } from 'react-redux';
-import { assign, pick } from 'lodash';
+import { assign, pick, isEmpty } from 'lodash';
+import like from 'actions/Like';
 const stateToProps = (state) => {
+  const likeParameters = state.like.entry ? assign({}, pick(state.like.entry,
+            ['meta', 'image', 'likes', 'text', 'id']),
+            {key: state.like.entry.id}) : {};
+
   const parameters = state.post.entry ? assign({}, pick(state.post.entry,
              ['meta', 'image', 'likes', 'text', 'id']),
              {key: state.post.entry.id}) : {};
+  const finalParameters = isEmpty(likeParameters) ? parameters : likeParameters;
+
   return {
-    item: parameters,
+    item: finalParameters,
     isFetching: state.post.isFetching,
     error: state.post.error
   };
 };
 
-export default connect(stateToProps)(Post);
+const actionsToProps = (dispatch) => {
+  return {
+    increaselikesHandler: (id) => {
+      dispatch(like(id));
+    }
+  };
+};
+
+export default connect(stateToProps, actionsToProps)(Post);

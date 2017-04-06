@@ -1,10 +1,10 @@
 import * as types from 'constants/actionTypes/LikeActionTypes';
 import { API_CALL } from 'middleware/API';
 
-export function fetchPage(page) {
+export default function like(postId) {
   return {
     [API_CALL]:{
-      endpoint: `/posts/pages/${page}/likes`,
+      endpoint: `/posts/${postId}/likes`,
       method: 'PUT',
       query: {},
       types: [

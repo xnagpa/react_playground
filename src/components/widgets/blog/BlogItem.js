@@ -13,9 +13,10 @@ const BlogItem =  (props) => {
     image,
     text,
     likes,
-    increaselikesHandler,
+    increaseLikesHandler,
     id
   } = props;
+
   return <Item>
     { image && <Item.Image size='medium' src={ image.src } />}
     <Item.Content>
@@ -34,7 +35,7 @@ const BlogItem =  (props) => {
       </Item.Meta>
       <Item.Extra>
         <Like count= {likes}
-              increaselikesHandler={increaselikesHandler}
+              increaseLikesHandler={increaseLikesHandler}
               id = { id }/>
       </Item.Extra>
     </Item.Content>
@@ -52,7 +53,7 @@ BlogItem.propTypes = {
   text: React.PropTypes.string,
   image: React.PropTypes.shape(Image.propTypes),
   likes: React.PropTypes.number,
-  increaselikesHandler: React.PropTypes.func,
+  increaseLikesHandler: React.PropTypes.func,
   id: React.PropTypes.number
 };
 

@@ -11,9 +11,20 @@ class Like extends React.Component {
   }
 
   handleClick() {
-    // Что мне здесь писать?
-    // как заставить action выполняться? 
+    this.props.increaseLikesHandler(this.props.id);
   }
+
+  componentWillReceiveProps(nextProps) {
+    //nextProps не изменяется
+    // console.log(`Will receive props ${this.props != nextProps}`);
+    // console.log(`this.props id ${this.props.id} count ${this.props.count} handler=${this.props.increaseLikesHandler}`);
+    // console.log(`this.props id ${nextProps.id} count ${nextProps.count} handler=${nextProps.increaseLikesHandler}`);
+  }
+
+  componentDidMount() {
+    console.log(`Component did mount`);
+  }
+
 
   render() {
     return <div>
@@ -28,7 +39,7 @@ class Like extends React.Component {
 
 Like.propTypes = {
   count: React.PropTypes.number,
-  increaselikesHandler: React.PropTypes.func,
+  increaseLikesHandler: React.PropTypes.func,
   id: React.PropTypes.number
 };
 

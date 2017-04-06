@@ -9,15 +9,16 @@ import { likePath } from 'helpers/routes/like';
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
 import { fetchPage } from 'actions/Pagination';
+import like from 'actions/Like';
 
 import PostContainer from 'containers/PostContainer';
 import PostsContainer from 'containers/PostsContainer';
 
 const Like = {
   path: likePath(),
-  component: PostsContainer,
+  component: PostContainer,
   prepareData: (store, query, params) => (
-    store.dispatch(fetchPage(params.page))
+    store.dispatch(like(params.post))
   )
 };
 
