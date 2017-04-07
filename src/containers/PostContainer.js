@@ -28,4 +28,9 @@ const actionsToProps = (dispatch) => {
   };
 };
 
-export default connect(stateToProps, actionsToProps)(Post);
+const mergeProps = (stateProps, dispatchProps) => {
+  stateProps.item.increaseLikesHandler = dispatchProps.increaseLikesHandler;
+  return stateProps;
+};
+
+export default connect(stateToProps, actionsToProps, mergeProps)(Post);

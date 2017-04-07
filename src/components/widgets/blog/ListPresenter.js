@@ -16,7 +16,7 @@ const ListPresenter = (props) => {
         </Item.Group>
         <Item.Group>
           { props.items && props.items.length > 0 && <PaginationMenu
-            handlePaginationClick={() => alert(props)}
+            handlePaginationClick={props.handlePaginationClick}
             totalCount = {props.items[0].totalCount}/> }
         </Item.Group>
       </Grid.Column>

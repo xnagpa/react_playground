@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { List } from 'semantic-ui-react';
-// import { Menu } from 'semantic-ui-react';
-// import { bind } from 'lodash';
-import { map, range } from 'lodash';
-import { paginationPath } from 'helpers/routes/pagination';
-import Link from 'components/elements/Link';
+import { map, range, bind } from 'lodash';
+import { Button } from 'semantic-ui-react';
 
 class PaginationMenu extends Component {
   constructor(props) {
     super(props);
+    this.handleClick = bind(this.handleClick, this);
+  }
+
+  handleClick(page) {
+    this.props.handlePaginationClick(page);
   }
 
   render() {
@@ -16,11 +18,9 @@ class PaginationMenu extends Component {
     const pagesCount = Math.ceil(this.props.totalCount / perPageCount);
     return (
         <List horizontal>
-        {map(range(1,pagesCount + 1), (entry) => (
-          <List.Item as='a'>
-          <Link to={ paginationPath(entry) }>Страница {entry}</Link>
-          </List.Item>
-        ))}
+          {map(range(1,pagesCount + 1), (entry) => (
+              <Button onClick={ this.handleClick.bind(this, entry) }>Страница {entry}</Button>
+          ))}
         </List>
     );
   }

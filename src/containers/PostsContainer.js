@@ -2,6 +2,7 @@ import ListPresenter from 'components/widgets/blog/ListPresenter';
 import { connect } from 'react-redux';
 import { map } from 'lodash';
 import like from 'actions/Like';
+import { fetchPage } from 'actions/Pagination';
 
 const stateToProps = (state) => {
   const params = state.pagination.entries.length == 0 ?
@@ -18,6 +19,9 @@ const stateToProps = (state) => {
 
 const actionsToProps = (dispatch) => {
   return {
+    handlePaginationClick: (page) => {
+      dispatch(fetchPage(page));
+    },
     increaseLikesHandler: (id) => {
       dispatch(like(id));
     }
