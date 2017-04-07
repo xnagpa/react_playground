@@ -14,13 +14,12 @@ class Like extends React.Component {
     this.props.increaseLikesHandler(this.props.id);
   }
 
-
   render() {
     return <div>
       <p>
-        {`${this.props.count} likes`}
+        {`${this.props.count || this.props.defaultLikeCount} likes`}
       </p>
-      <Button onClick={this.handleClick}> 'Like this post'</Button>
+      <Button onClick={ this.handleClick }> 'Like this post'</Button>
     </div>;
   }
 

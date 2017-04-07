@@ -1,11 +1,12 @@
 import React from 'react';
 import Image from './elements/Image';
 import TextBox from './elements/TextBox';
-import Like from './elements/Like';
+// import Like from './elements/Like';
 import MetaData from './elements/MetaData';
 import Link from 'components/elements/Link';
 import { postsPath } from 'helpers/routes';
 import { Item } from 'semantic-ui-react';
+import LikeContainer from 'containers/LikeContainer';
 
 const BlogItem =  (props) => {
   const {
@@ -34,9 +35,7 @@ const BlogItem =  (props) => {
         createdAt= {meta.createdAt}/> }
       </Item.Meta>
       <Item.Extra>
-        <Like count= {likes}
-              increaseLikesHandler={increaseLikesHandler}
-              id = { id }/>
+        <LikeContainer id={ id } defaultLikeCount = { likes }/>
       </Item.Extra>
     </Item.Content>
   </Item>;

@@ -12,10 +12,11 @@ import { fetchPage } from 'actions/Pagination';
 
 import PostContainer from 'containers/PostContainer';
 import PostsContainer from 'containers/PostsContainer';
+import LikeContainer from 'containers/LikeContainer';
 
 const Like = {
   path: likePath(),
-  component: PostContainer
+  component: LikeContainer
 };
 
 const LikePosts = {
@@ -60,7 +61,6 @@ export default{
     PostRoute,
     AboutRoute,
     Pagination,
-    Like,
-    LikePosts
+    Like
   ]
 };

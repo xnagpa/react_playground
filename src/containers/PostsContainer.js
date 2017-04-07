@@ -8,10 +8,8 @@ const stateToProps = (state) => {
   const params = state.pagination.entries.length == 0 ?
     state.posts.entries : state.pagination.entries;
 
-  const paramsWithLike = state.like.entry ? setLikeOnEntries(state.like.entry, params) : null;
-
   return {
-    items: paramsWithLike || params,
+    items: params,
     isFetching: state.posts.isFetching,
     error: state.posts.error
   };
