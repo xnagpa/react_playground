@@ -3,40 +3,18 @@ import MainLayout from 'components/layouts/MainLayout';
 import About from 'components/About';
 import { postsPath } from 'helpers/routes/index';
 import { aboutPath } from 'helpers/routes/about';
-import { paginationPath } from 'helpers/routes/pagination';
-import { likePath } from 'helpers/routes/like';
 
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
-import { fetchPage } from 'actions/Pagination';
 
 import PostContainer from 'containers/PostContainer';
 import PostsContainer from 'containers/PostsContainer';
-import LikeContainer from 'containers/LikeContainer';
-
-const Like = {
-  path: likePath(),
-  component: LikeContainer
-};
-
-const LikePosts = {
-  path: likePath(),
-  component: PostsContainer
-};
-
-const Pagination = {
-  path: paginationPath(),
-  component: PostsContainer,
-  prepareData: (store, query, params) => (
-    store.dispatch(fetchPage(params.page))
-  )
-};
 
 const Index = {
   path: '/',
   component: PostsContainer,
   prepareData: (store) => (
-    store.dispatch(fetchPosts())
+    store.dispatch(fetchPosts(1))
   )
 };
 
@@ -60,7 +38,5 @@ export default{
     Index,
     PostRoute,
     AboutRoute,
-    Pagination,
-    Like
   ]
 };
