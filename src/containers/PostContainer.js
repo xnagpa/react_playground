@@ -5,7 +5,7 @@ const stateToProps = (state) => {
 
   const parameters = state.post.entry ? assign({}, pick(state.post.entry,
              ['meta', 'image', 'likes', 'text', 'id']),
-             {key: state.post.entry.id}) : {};
+             {key: state.post.entry.id}) : null;
 
   return {
     item: parameters,

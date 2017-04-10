@@ -13,8 +13,6 @@ const BlogItem =  (props) => {
     meta,
     image,
     text,
-    likes,
-    increaseLikesHandler,
     id
   } = props;
 
@@ -35,7 +33,7 @@ const BlogItem =  (props) => {
         createdAt= {meta.createdAt}/> }
       </Item.Meta>
       <Item.Extra>
-        <LikeContainer id={ id } defaultLikeCount = { likes }/>
+        <LikeContainer id={ id }/>
       </Item.Extra>
     </Item.Content>
   </Item>;

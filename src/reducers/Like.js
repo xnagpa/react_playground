@@ -15,8 +15,8 @@ export default function(state = initialState, action) {
     case 'INC_LIKE_ERROR':
       return assign({}, state, { error: true });
     case 'INC_LIKE_SUCCESS':
-      console.log(`AAAAARGHH!!!${Object.keys(state)}`);
-      return assign({}, state, { entry: action.response });
+      return assign({}, state, { entry: action.response['entry'],
+        entries: action.response['entries'] });
     default:
       return state;
   }
