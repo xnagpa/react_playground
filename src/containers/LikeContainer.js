@@ -1,17 +1,18 @@
 import Like from 'components/widgets/blog/elements/Like';
 import { connect } from 'react-redux';
 import like from 'actions/Like';
-import { find } from 'lodash';
+import { find, get} from 'lodash';
 
 const stateToProps = (state, ownProps) => {
 
-  let entry = state.like.entries && find(state.like.entries,
-    { id: ownProps.id });
-  entry = entry == undefined ? state.posts.entries && find(state.posts.entries,
-    { id: ownProps.id }) : entry;
+  const likeEntry = find(get(state, 'like.entries', false), { id: ownProps.id });
+  const postsEntry  = find(get(state, 'posts.entries', false), { id: ownProps.id });
+  const postEntry = get(state, 'post.entry', false);
+
+  let finalEntry = likeEntry || postsEntry || postEntry
 
   return {
-    count: entry && entry.likes || 0,
+    count:  finalEntry.likes || 0,
     isFetching: state.like.isFetching,
     error: state.like.error
   };

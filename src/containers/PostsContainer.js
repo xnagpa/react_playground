@@ -5,8 +5,6 @@ import like from 'actions/Like';
 import { fetchPosts } from 'actions/Posts';
 
 const stateToProps = (state) => {
-  //const parameters = state.posts.entries == {} || state.posts.entries == undefined ?  state.like.entries : state.posts.entries;
-
   return {
     items: state.posts.entries,
     isFetching: state.posts.isFetching,

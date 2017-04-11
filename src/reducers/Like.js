@@ -3,7 +3,6 @@ import { assign } from 'lodash/object';
 const initialState = {
   isFetching: false,
   error: false,
-  entry: null,
   entries: []
 };
 
@@ -15,7 +14,7 @@ export default function(state = initialState, action) {
     case 'INC_LIKE_ERROR':
       return assign({}, state, { error: true });
     case 'INC_LIKE_SUCCESS':
-      return assign({}, state, { entry: action.response['entry'],
+      return assign({}, state, {
         entries: action.response['entries'] });
     default:
       return state;
