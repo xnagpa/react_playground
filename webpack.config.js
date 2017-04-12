@@ -9,7 +9,7 @@ const root = path.join(process.cwd(), 'src');
 export default {
   entry: [
     'react-hot-loader/patch',
-    'weback-hot-middleware/client',
+    'webpack-hot-middleware/client',
     './src/index.js'
   ],
 
