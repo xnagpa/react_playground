@@ -13,9 +13,9 @@ import PostsContainer from 'containers/PostsContainer';
 const Index = {
   path: '/',
   component: PostsContainer,
-  prepareData: (store, query) => (
-    store.dispatch(fetchPosts(query['page'] || 1))
-  )
+  prepareData: (store, query) => {
+    return store.dispatch(fetchPosts(query['page'] || 1));
+  }
 };
 
 const AboutRoute = {
@@ -27,9 +27,9 @@ const AboutRoute = {
 const PostRoute = {
   component: PostContainer,
   path: postsPath(),
-  prepareData: (store, query, params) => (
-    store.dispatch(fetchPost(params.id))
-  )
+  prepareData: (store, query, params) => {
+    return  store.dispatch(fetchPost(params.id));
+  }
 };
 
 export default{
