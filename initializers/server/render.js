@@ -7,6 +7,8 @@ import routes from 'routes';
 import prepareData from 'helpers/prepareData';
 import { compact } from 'lodash/array';
 
+import Helmet from 'react-helmet';
+
 const store = createStore();
 
 export default (req, res) => {
@@ -20,10 +22,12 @@ export default (req, res) => {
           React.createElement(RouterContext, renderProps)
         )
       );
+      const head = Helmet.rewind();
+      console.log(head.title.toString());
       res.status(200);
       res.render(
         'index',
-        { initialState, content }
+        { initialState, content, head }
       );
     })
   );
