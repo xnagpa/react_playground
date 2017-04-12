@@ -3,6 +3,7 @@ import MainLayout from 'components/layouts/MainLayout';
 import About from 'components/About';
 import { postsPath } from 'helpers/routes/index';
 import { aboutPath } from 'helpers/routes/about';
+import initialLoad from 'helpers/initialLoad';
 
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
@@ -14,6 +15,7 @@ const Index = {
   path: '/',
   component: PostsContainer,
   prepareData: (store, query) => {
+    if (initialLoad()) return;
     return store.dispatch(fetchPosts(query['page'] || 1));
   }
 };
