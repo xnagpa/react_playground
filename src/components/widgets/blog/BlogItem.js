@@ -1,21 +1,21 @@
 import React from 'react';
 import Image from './elements/Image';
 import TextBox from './elements/TextBox';
-import Like from './elements/Like';
+// import Like from './elements/Like';
 import MetaData from './elements/MetaData';
 import Link from 'components/elements/Link';
 import { postsPath } from 'helpers/routes';
 import { Item } from 'semantic-ui-react';
+import LikeContainer from 'containers/LikeContainer';
 
 const BlogItem =  (props) => {
   const {
     meta,
     image,
     text,
-    likes,
-    increaselikesHandler,
     id
   } = props;
+
   return <Item>
     { image && <Item.Image size='medium' src={ image.src } />}
     <Item.Content>
@@ -33,9 +33,7 @@ const BlogItem =  (props) => {
         createdAt= {meta.createdAt}/> }
       </Item.Meta>
       <Item.Extra>
-        <Like count= {likes}
-              increaselikesHandler={increaselikesHandler}
-              id = { id }/>
+        <LikeContainer id={ id }/>
       </Item.Extra>
     </Item.Content>
   </Item>;
@@ -52,7 +50,7 @@ BlogItem.propTypes = {
   text: React.PropTypes.string,
   image: React.PropTypes.shape(Image.propTypes),
   likes: React.PropTypes.number,
-  increaselikesHandler: React.PropTypes.func,
+  increaseLikesHandler: React.PropTypes.func,
   id: React.PropTypes.number
 };
 

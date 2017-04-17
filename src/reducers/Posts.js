@@ -3,7 +3,12 @@ import { assign } from 'lodash/object';
 const initialState = {
   isFetching: false,
   error: false,
-  entries: []
+  entries: [],
+  pagination: {
+    page: 1,
+    perPage: 2,
+    totalCount:0
+  }
 };
 
 export default function(state = initialState, action) {
@@ -13,7 +18,8 @@ export default function(state = initialState, action) {
     case 'FETCH_POSTS_ERROR':
       return assign({},initialState, { error: true });
     case 'FETCH_POSTS_SUCCESS':
-      return assign({},initialState, { entries: action.response });
+      return assign({},initialState, { entries: action.response['entries'],
+        pagination: action.response['pagination'] });
     default:
       return state;
   }

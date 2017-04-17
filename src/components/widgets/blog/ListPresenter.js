@@ -5,17 +5,18 @@ import { Grid, Item } from 'semantic-ui-react';
 import { map } from 'lodash/collection';
 import  React from 'react';
 
-const ListPresenter = (props) => (
-  <div>
+const ListPresenter = (props) => {
+  return <div>
     <Grid>
       <Grid.Column key={0} width={12}>
         <Item.Group>
           { props.items &&
-            <BlogItemList items={props.items}/> }
+            <BlogItemList items={props.items}
+              increaseLikesHandler={props.increaseLikesHandler}/> }
         </Item.Group>
         <Item.Group>
           { props.items && props.items.length > 0 && <PaginationMenu
-            handlePaginationClick={() => alert(props)}
+            handlePaginationClick={props.handlePaginationClick}
             totalCount = {props.items[0].totalCount}/> }
         </Item.Group>
       </Grid.Column>
@@ -24,8 +25,8 @@ const ListPresenter = (props) => (
           <PieChartPresenter likeTitles={likeTitles(props.items)}/>}
       </Grid.Column>
     </Grid>
-  </div>
-);
+  </div>;
+};
 
 const likeTitles = (entries) => (
   (map(entries, (entry) => (

@@ -11,15 +11,15 @@ class Like extends React.Component {
   }
 
   handleClick() {
-    this.props.increaselikesHandler(this.props.id);
+    this.props.increaseLikesHandler(this.props.id);
   }
 
   render() {
     return <div>
       <p>
-        {`${this.props.count} likes`}
+        {`${this.props.count || this.props.defaultLikeCount} likes`}
       </p>
-      <Button onClick={this.handleClick}> 'Like this post'</Button>
+      <Button onClick={ this.handleClick }> 'Like this post'</Button>
     </div>;
   }
 
@@ -27,7 +27,7 @@ class Like extends React.Component {
 
 Like.propTypes = {
   count: React.PropTypes.number,
-  increaselikesHandler: React.PropTypes.func,
+  increaseLikesHandler: React.PropTypes.func,
   id: React.PropTypes.number
 };
 

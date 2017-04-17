@@ -1,0 +1,3 @@
+export const INC_LIKE_REQUEST = 'INC_LIKE_REQUEST';
+export const INC_LIKE_SUCCESS = 'INC_LIKE_SUCCESS';
+export const INC_LIKE_ERROR = 'INC_LIKE_ERROR';
