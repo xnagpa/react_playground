@@ -37,6 +37,7 @@ const likeTitles = (entries) => (
 ListPresenter.propTypes = {
   items: React.PropTypes.array,
   increaseLikesHandler: React.PropTypes.func,
+  handlePaginationClick: React.PropTypes.func,
   likeTitles: React.PropTypes.array
 };
 

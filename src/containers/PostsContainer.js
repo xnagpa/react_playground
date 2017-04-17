@@ -1,4 +1,4 @@
-import ListPresenter from 'components/widgets/blog/ListPresenter';
+import Index from 'components/views/Index';
 import { connect } from 'react-redux';
 import { map } from 'lodash';
 import like from 'actions/Like';
@@ -23,4 +23,4 @@ const actionsToProps = (dispatch) => {
   };
 };
 
-export default connect(stateToProps, actionsToProps)(ListPresenter);
+export default connect(stateToProps, actionsToProps)(Index);

@@ -19,7 +19,7 @@ const BlogItem =  (props) => {
   return <Item>
     { image && <Item.Image size='medium' src={ image.src } />}
     <Item.Content>
-      <Item.Header as='a'>
+      <Item.Header>
         <Link to={ postsPath(id) }>{ text }</Link>
       </Item.Header>
       <Item.Description>
