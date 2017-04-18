@@ -1,8 +1,10 @@
 import MainLayout from 'components/layouts/MainLayout';
 
-import About from 'components/About';
+import About from 'components/views/About';
+import ContactUs from 'components/views/ContactUs';
 import { postsPath } from 'helpers/routes/index';
 import { aboutPath } from 'helpers/routes/about';
+import { contactPath } from 'helpers/routes/contact';
 import initialLoad from 'helpers/initialLoad';
 
 import { fetchPosts } from 'actions/Posts';
@@ -25,6 +27,11 @@ const AboutRoute = {
   component: About
 };
 
+const ContactRoute = {
+  path: contactPath(),
+  component: ContactUs
+};
+
 
 const PostRoute = {
   component: PostContainer,
@@ -40,5 +47,6 @@ export default{
     Index,
     PostRoute,
     AboutRoute,
+    ContactRoute
   ]
 };

@@ -14,6 +14,11 @@ const HeaderList = () => (
         <Link to='/about'>About</Link>
       </List.Content>
     </List.Item>
+    <List.Item>
+      <List.Content>
+        <Link to='/contactus'>Contact us</Link>
+      </List.Content>
+    </List.Item>
   </List>);
 
 export default HeaderList;
