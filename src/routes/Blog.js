@@ -2,7 +2,9 @@ import MainLayout from 'components/layouts/MainLayout';
 
 import About from 'components/views/About';
 import ContactUs from 'components/views/ContactUs';
+import Edit from 'components/views/EditPost';
 import { postsPath } from 'helpers/routes/index';
+import { editPath } from 'helpers/routes/edit';
 import { aboutPath } from 'helpers/routes/about';
 import { contactPath } from 'helpers/routes/contact';
 import initialLoad from 'helpers/initialLoad';
@@ -27,6 +29,14 @@ const AboutRoute = {
   component: About
 };
 
+const EditPostRoute = {
+  path: editPath(),
+  component: Edit,
+  prepareData: (store, query, params) => {
+    return  store.dispatch(fetchPost(params.id));
+  }
+};
+
 const ContactRoute = {
   path: contactPath(),
   component: ContactUs
@@ -47,6 +57,7 @@ export default{
     Index,
     PostRoute,
     AboutRoute,
-    ContactRoute
+    ContactRoute,
+    EditPostRoute
   ]
 };
