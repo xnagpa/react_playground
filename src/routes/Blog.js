@@ -31,10 +31,7 @@ const AboutRoute = {
 
 const EditPostRoute = {
   path: editPath(),
-  component: Edit,
-  prepareData: (store, query, params) => {
-    return  store.dispatch(fetchPost(params.id));
-  }
+  component: Edit
 };
 
 const ContactRoute = {

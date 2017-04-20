@@ -10,12 +10,13 @@ import LikeContainer from 'containers/LikeContainer';
 
 const BlogItem =  (props) => {
   const {
+    editPath,
     meta,
     image,
     text,
     id
   } = props;
-
+  console.log(editPath);
   return <Item>
     { image && <Item.Image size='medium' src={ image.src } />}
     <Item.Content>
@@ -34,6 +35,9 @@ const BlogItem =  (props) => {
       </Item.Meta>
       <Item.Extra>
         <LikeContainer id={ id }/>
+      </Item.Extra>
+      <Item.Extra>
+        <Link to={ editPath }>Edit this post</Link>
       </Item.Extra>
     </Item.Content>
   </Item>;

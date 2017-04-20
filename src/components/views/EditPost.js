@@ -4,20 +4,6 @@ import { connect } from 'react-redux';
 
 import classNames from 'classnames';
 
-// const validate = (values) => {
-//   const errors = {};
-//   if(values.text.length < 5)
-//     errors.text = 'Title is too long';
-//   return errors;
-// };
-//
-// const warn = (values) => {
-//   const warnings = {};
-//   if(values.text.length < 5)
-//     warnings.text = 'Line should contain be more than 5 symbols';
-//   return warnings ;
-// };
-
 const renderField = ({ input, label, type, meta: { touched, error, warning }}) => (
   <div  className={classNames('ui  field', {error })}>
     <label>{label}</label>
@@ -53,7 +39,7 @@ const sleep = ms => new Promise(
 );
 
 const submit = (values) => {
-  return sleep(1000).then(()=>{
+  return sleep(1000).then(() => {
     if (values.text.length < 5)
       throw new SubmissionError({text: 'Line should contain be more than 5 symbols'});
     else {
@@ -62,8 +48,13 @@ const submit = (values) => {
   });
 };
 
+// const extract_entry = (state) => {
+//   state.post.entry &&
+// };
+
 export default connect(
   (state) => {
+    console.log(state.post.entry);
     return {
       initialValues: {
         text:  state.post.entry && state.post.entry.text,
@@ -73,12 +64,7 @@ export default connect(
     };
   }
 
-  // (dispatch) => ({
-  //   updatePost: flowRight(dispatch, updatePost)
-  // })
 )(reduxForm({
   form: 'editPost',
-  // validate,
-  // warn,
-  onSubmit: submit //(values) => console.log(JSON.stringify(values))
+  onSubmit: submit
 })(EditPostView));
