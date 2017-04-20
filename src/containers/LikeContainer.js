@@ -9,7 +9,7 @@ const stateToProps = (state, ownProps) => {
   const postsEntry  = find(get(state, 'posts.entries', false), { id: ownProps.id });
   const postEntry = get(state, 'post.entry', false);
 
-  let finalEntry = likeEntry || postsEntry || postEntry
+  let finalEntry = likeEntry || postsEntry || postEntry;
 
   return {
     count:  finalEntry.likes || 0,
