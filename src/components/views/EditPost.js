@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
+import { find } from 'lodash';
 
 import classNames from 'classnames';
 
@@ -48,18 +49,24 @@ const submit = (values) => {
   });
 };
 
-// const extract_entry = (state) => {
-//   state.post.entry &&
-// };
+const extractEntry = (state) => {
+  let entry = {};
+  if (state.post.entry) {
+    entry = state.post.entry;
+  } else if (state.posts.entries) {
+    entry = find(state.posts.entries, { editPath: window.location.pathname });
+  }
+  return entry;
+};
 
 export default connect(
   (state) => {
-    console.log(state.post.entry);
+    const entry = extractEntry(state);
     return {
       initialValues: {
-        text:  state.post.entry && state.post.entry.text,
-        createdAt:  state.post.entry && state.post.entry.meta.createdAt,
-        authorName:  state.post.entry && state.post.entry.meta.author.name
+        text:  entry.text,
+        createdAt:  entry.meta.createdAt,
+        authorName:  entry.meta.author.name
       }
     };
   }
