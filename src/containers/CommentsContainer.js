@@ -1,5 +1,6 @@
 import CommentList from 'components/widgets/blog/CommentList';
 import { connect } from 'react-redux';
+import createComment from 'actions/CreateComment';
 
 const stateToProps = (state) => {
   return {
@@ -10,4 +11,11 @@ const stateToProps = (state) => {
   };
 };
 
-export default connect(stateToProps)(CommentList);
+const actionsToProps = (dispatch, ownProps) => {
+  return {
+    createCommentHandler: (payload) => {
+      dispatch(createComment(ownProps.id, payload));
+    }
+  };
+};
+export default connect(stateToProps, actionsToProps)(CommentList);

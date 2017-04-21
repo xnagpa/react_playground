@@ -18,9 +18,9 @@ export default function(state = initialState, action) {
 
     case 'CREATE_COMMENT_REQUEST':
       return assign({},initialState, { isUpdating: true });
-    case 'CREATE_COMMENT_SUCCESS':
-      return assign({},initialState, { error: true });
     case 'CREATE_COMMENT_ERROR':
+      return assign({},initialState, { error: true });
+    case 'CREATE_COMMENT_SUCCESS':
       return assign({},initialState, { entries: action.response });
 
     default:

@@ -12,7 +12,7 @@ const Post = (props) => {
             { props.item && <BlogItem {...props.item}/> }
            </Item.Group>
            <Item.Group>
-            <CommentsContainer />
+            { props.item && <CommentsContainer id={props.item.id}/>}
            </Item.Group>
             { props.item && <Helmet title = {props.item.text}/> }
          </div>;
