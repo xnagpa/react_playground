@@ -11,6 +11,7 @@ import initialLoad from 'helpers/initialLoad';
 
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
+import { fetchComments } from 'actions/Comments';
 
 import PostContainer from 'containers/PostContainer';
 import PostsContainer from 'containers/PostsContainer';
@@ -44,7 +45,8 @@ const PostRoute = {
   component: PostContainer,
   path: postsPath(),
   prepareData: (store, query, params) => {
-    return  store.dispatch(fetchPost(params.id));
+    return  store.dispatch(fetchPost(params.id))
+    .then(() => (store.dispatch(fetchComments(params.id))));
   }
 };
 

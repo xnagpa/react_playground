@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Header, Container } from 'semantic-ui-react';
-import UncontrolledForm from 'components/widgets/blog/elements/UncontrolledForm';
+import UncontrolledForm from
+  'components/widgets/blog/elements/UncontrolledForm';
 import ControlledForm from 'components/widgets/blog/elements/ControlledForm';
 
 const ContactUs = () => (

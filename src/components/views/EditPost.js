@@ -21,12 +21,12 @@ const renderField = ({ input, label, type, meta: { touched, error, warning }}) =
 );
 
 //Вопрос с передачей payload. На сервер payload не приходит совсем.
-//Вроде бы в action я все задал правильно. 
+//Вроде бы в action я все задал правильно.
 const EditPostView = ({ handleSubmit, pristine, submitting, reset, dispatch}) => {
   const id = parseInt(window.location.pathname.match(/\d+/));
   return <div>
     <h1>Edit Post</h1>
-    <form onSubmit={handleSubmit(() => (dispatch(updatePost(id, {fucking: "SHIIIT"}))))} className='ui form'>
+    <form onSubmit={handleSubmit((values) => (dispatch(updatePost(id, values))))} className='ui form'>
         <Field label='Title' component={renderField} type='text'
           name='text'/>
         <Field label='Created date' component={renderField} type='text'

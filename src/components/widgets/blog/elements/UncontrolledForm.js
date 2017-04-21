@@ -17,7 +17,7 @@ class UncontrolledForm extends Component {
     this.setState({ errors: {} });
     const values = mapValues(this.form, 'value');
 
-    if(!values.email || values.email.length < 3){
+    if (!values.email || values.email.length < 3){
       const err = assign(
         {},
         this.state,
@@ -67,7 +67,7 @@ class Text extends React.Component {
     const { label, name, fieldRef, error } = this.props;
     return (
       <div className={classNames('ui field', { error })}>
-        <label for={ name }>{ label }</label>
+        <label htmlFor={ name }>{ label }</label>
         <input
           type='text'
           id={ name }
@@ -85,7 +85,7 @@ class TextArea extends React.Component {
     const { label, name, fieldRef } = this.props;
     return (
       <div className="ui field">
-        <label for={ name }>{ label }</label>
+        <label htmlFor={ name }>{ label }</label>
         <textarea
           id={ name }
           className="ui input"
