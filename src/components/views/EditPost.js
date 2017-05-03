@@ -1,7 +1,6 @@
 import React from 'react';
-import { Field, reduxForm, SubmissionError } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { find } from 'lodash';
 import { updatePost } from 'actions/UpdatePost';
 
 import classNames from 'classnames';
@@ -20,10 +19,8 @@ const renderField = ({ input, label, type, meta: { touched, error, warning }}) =
   </div>
 );
 
-//Вопрос с передачей payload. На сервер payload не приходит совсем.
-//Вроде бы в action я все задал правильно.
-const EditPostView = ({ handleSubmit, pristine, submitting, reset, dispatch}) => {
-  const id = parseInt(window.location.pathname.match(/\d+/));
+const EditPostView = ({ handleSubmit, pristine, submitting, reset, dispatch, params}) => {
+  const id = params.id;
   return <div>
     <h1>Edit Post</h1>
     <form onSubmit={handleSubmit((values) => (dispatch(updatePost(id, values))))} className='ui form'>
@@ -39,25 +36,25 @@ const EditPostView = ({ handleSubmit, pristine, submitting, reset, dispatch}) =>
   </div>;
 };
 
-const extractEntry = (state) => {
-  let entry = {};
-  if (state.post.entry) {
-    entry = state.post.entry;
-  } else if (state.posts.entries) {
-    entry = find(state.posts.entries, { editPath: window.location.pathname });
-  }
-  return entry;
-};
-
 export default connect(
   (state) => {
-    const entry = extractEntry(state);
+    //console.log(state)
+    const entry = state.post.entry;
+    console.log(entry);
+    // return {
+    //   initialValues: {
+    //     text: entry && entry.text,
+    //     createdAt: entry && entry.meta.createdAt,
+    //     authorName: entry && entry.meta.author.name
+    //   }
+
     return {
       initialValues: {
-        text:  entry.text,
-        createdAt:  entry.meta.createdAt,
-        authorName:  entry.meta.author.name
-      }
+        text: entry && entry.text,
+        createdAt: entry && entry.meta.createdAt,
+        authorName: entry && entry.meta.author.name
+      },
+      enableReinitialize: true
     };
   }
 

@@ -29,7 +29,7 @@ export default (req, res) => {
         'index',
         { initialState, content, head }
       );
-    })
+    }).catch(error => console.log(`Error: ${error}`))
   );
 };
 
