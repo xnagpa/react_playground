@@ -4,26 +4,25 @@ const initialState = {
   isUpdating: false,
   isFetching: false,
   error: false,
-  entry: null
+  entries: null
 };
-
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case 'FETCH_POST_REQUEST':
+    case 'FETCH_COMMENTS_REQUEST':
       return assign({},initialState, { isFetching: true });
-    case 'FETCH_POST_ERROR':
+    case 'FETCH_COMMENTS_ERROR':
       return assign({},initialState, { error: true });
-    case 'FETCH_POST_SUCCESS':
-      return assign({},initialState, { entry: action.response });
+    case 'FETCH_COMMENTS_SUCCESS':
+      return assign({},initialState, { entries: action.response });
 
-    case 'UPDATE_POST_REQUEST':
+    case 'CREATE_COMMENT_REQUEST':
       return assign({},initialState, { isUpdating: true });
-    case 'UPDATE_POST_ERROR':
+    case 'CREATE_COMMENT_ERROR':
       return assign({},initialState, { error: true });
-    case 'UPDATE_POST_SUCCESS':
-      return assign({},initialState, { entry: action.response });
-  
+    case 'CREATE_COMMENT_SUCCESS':
+      return assign({},initialState, { entries: action.response });
+
     default:
       return state;
   }

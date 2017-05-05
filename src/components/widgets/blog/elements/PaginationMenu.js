@@ -19,7 +19,7 @@ class PaginationMenu extends Component {
     return (
         <List horizontal>
           {map(range(1,pagesCount + 1), (entry) => (
-              <Button onClick={ this.handleClick.bind(this, entry) }>Страница {entry}</Button>
+              <Button key={entry} onClick={ () => (this.handleClick(entry)) }>Страница {entry}</Button>
           ))}
         </List>
     );
@@ -28,7 +28,7 @@ class PaginationMenu extends Component {
 
 PaginationMenu.propTypes = {
   handlePaginationClick: React.PropTypes.func,
-  totalCount: React.PropTypes.num
+  totalCount: React.PropTypes.number
 };
 
 export default PaginationMenu;

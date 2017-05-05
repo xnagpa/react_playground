@@ -1,12 +1,17 @@
 import MainLayout from 'components/layouts/MainLayout';
 
-import About from 'components/About';
+import About from 'components/views/About';
+import ContactUs from 'components/views/ContactUs';
+import Edit from 'components/views/EditPost';
 import { postsPath } from 'helpers/routes/index';
+import { editPath } from 'helpers/routes/edit';
 import { aboutPath } from 'helpers/routes/about';
+import { contactPath } from 'helpers/routes/contact';
 import initialLoad from 'helpers/initialLoad';
 
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
+import { fetchComments } from 'actions/Comments';
 
 import PostContainer from 'containers/PostContainer';
 import PostsContainer from 'containers/PostsContainer';
@@ -25,12 +30,26 @@ const AboutRoute = {
   component: About
 };
 
+const EditPostRoute = {
+  path: editPath(),
+  component: Edit,
+  prepareData: (store, query, params) => {
+    return  store.dispatch(fetchPost(params.id));
+  }
+};
+
+const ContactRoute = {
+  path: contactPath(),
+  component: ContactUs
+};
+
 
 const PostRoute = {
   component: PostContainer,
   path: postsPath(),
   prepareData: (store, query, params) => {
-    return  store.dispatch(fetchPost(params.id));
+    return  store.dispatch(fetchPost(params.id))
+    .then(() => (store.dispatch(fetchComments(params.id))));
   }
 };
 
@@ -40,5 +59,7 @@ export default{
     Index,
     PostRoute,
     AboutRoute,
+    ContactRoute,
+    EditPostRoute
   ]
 };
