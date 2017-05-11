@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TextBox =  (props) => (
   <Span>{ props.children }</Span>
 );
 
 TextBox.propTypes = {
-  children: React.PropTypes.string
+  children: PropTypes.string
 };
 
 
@@ -16,7 +17,7 @@ const Span =  (props) => (
 );
 
 Span.propTypes = {
-  children: React.PropTypes.string
+  children: PropTypes.string
 };
 
 Span.defaultProps = {

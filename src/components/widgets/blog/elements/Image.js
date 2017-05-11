@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image as SemanticImage } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const Image =  (props) => (
   <SemanticImage src={props.src}/>
@@ -7,7 +8,7 @@ const Image =  (props) => (
 
 
 Image.propTypes = {
-  src: React.PropTypes.string
+  src: PropTypes.string
 };
 
 Image.defaultProps = {

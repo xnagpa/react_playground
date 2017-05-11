@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import { bind } from 'lodash';
 
@@ -26,9 +27,9 @@ class Like extends React.Component {
 }
 
 Like.propTypes = {
-  count: React.PropTypes.number,
-  increaseLikesHandler: React.PropTypes.func,
-  id: React.PropTypes.number
+  count: PropTypes.number,
+  increaseLikesHandler: PropTypes.func,
+  id: PropTypes.number
 };
 
 

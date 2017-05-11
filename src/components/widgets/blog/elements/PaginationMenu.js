@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { List } from 'semantic-ui-react';
 import { map, range, bind } from 'lodash';
 import { Button } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 class PaginationMenu extends Component {
   constructor(props) {
@@ -27,8 +28,8 @@ class PaginationMenu extends Component {
 }
 
 PaginationMenu.propTypes = {
-  handlePaginationClick: React.PropTypes.func,
-  totalCount: React.PropTypes.number
+  handlePaginationClick: PropTypes.func,
+  totalCount: PropTypes.number
 };
 
 export default PaginationMenu;

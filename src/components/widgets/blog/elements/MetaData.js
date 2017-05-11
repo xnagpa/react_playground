@@ -1,5 +1,6 @@
 import React from 'react';
 import TextBox from './TextBox';
+import PropTypes from 'prop-types';
 const MetaData = (props) => {
   const {
     author,
@@ -25,12 +26,12 @@ MetaData.defaultProps = {
 };
 
 MetaData.propTypes = {
-  author: React.PropTypes.shape({
-    name: React.PropTypes.string,
-    age: React.PropTypes.string
+  author: PropTypes.shape({
+    name: PropTypes.string,
+    age: PropTypes.string
   }),
-  updatedAt: React.PropTypes.string,
-  createdAt: React.PropTypes.string
+  updatedAt: PropTypes.string,
+  createdAt: PropTypes.string
 };
 
 export default MetaData;

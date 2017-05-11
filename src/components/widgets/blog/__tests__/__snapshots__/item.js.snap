@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render renders common item 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Item>
+    <ItemImage
+        size="medium"
+        src="http://semantic-ui.com/images/wireframe/short-paragraph.png"
+    />
+    <ItemContent>
+        <ItemHeader>
+            <Link
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to="/posts/5"
+            >
+                Finn and Jake\`s scrambled eggs
+            </Link>
+        </ItemHeader>
+        <ItemDescription>
+            <Image
+                src="http://semantic-ui.com/images/wireframe/short-paragraph.png"
+            />
+            <TextBox>
+                Finn and Jake\`s scrambled eggs
+            </TextBox>
+        </ItemDescription>
+        <ItemMeta />
+        <ItemExtra>
+            <Connect(Like)
+                id={5}
+            />
+        </ItemExtra>
+        <ItemExtra>
+            <Link
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to={undefined}
+            >
+                Edit this post
+            </Link>
+        </ItemExtra>
+    </ItemContent>
+</Item>,
+  "nodes": Array [
+    <Item>
+      <ItemImage
+            size="medium"
+            src="http://semantic-ui.com/images/wireframe/short-paragraph.png"
+      />
+      <ItemContent>
+            <ItemHeader>
+                  <Link
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to="/posts/5"
+                  >
+                        Finn and Jake\`s scrambled eggs
+                  </Link>
+            </ItemHeader>
+            <ItemDescription>
+                  <Image
+                        src="http://semantic-ui.com/images/wireframe/short-paragraph.png"
+                  />
+                  <TextBox>
+                        Finn and Jake\`s scrambled eggs
+                  </TextBox>
+            </ItemDescription>
+            <ItemMeta />
+            <ItemExtra>
+                  <Connect(Like)
+                        id={5}
+                  />
+            </ItemExtra>
+            <ItemExtra>
+                  <Link
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to={undefined}
+                  >
+                        Edit this post
+                  </Link>
+            </ItemExtra>
+      </ItemContent>
+</Item>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance":  {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <BlogItem
+        id={5}
+        image={
+                Object {
+                        "src": "http://semantic-ui.com/images/wireframe/short-paragraph.png",
+                      }
+        }
+        likes={0}
+        text="Finn and Jake\`s scrambled eggs"
+/>,
+      "_debugID": 35,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "id": 5,
+          "image": Object {
+            "src": "http://semantic-ui.com/images/wireframe/short-paragraph.png",
+          },
+          "likes": 0,
+          "text": "Finn and Jake\`s scrambled eggs",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 21,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Item>
+          <ItemImage
+                    size="medium"
+                    src="http://semantic-ui.com/images/wireframe/short-paragraph.png"
+          />
+          <ItemContent>
+                    <ItemHeader>
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to="/posts/5"
+                              >
+                                        Finn and Jake\`s scrambled eggs
+                              </Link>
+                    </ItemHeader>
+                    <ItemDescription>
+                              <Image
+                                        src="http://semantic-ui.com/images/wireframe/short-paragraph.png"
+                              />
+                              <TextBox>
+                                        Finn and Jake\`s scrambled eggs
+                              </TextBox>
+                    </ItemDescription>
+                    <ItemMeta />
+                    <ItemExtra>
+                              <Connect(Like)
+                                        id={5}
+                              />
+                    </ItemExtra>
+                    <ItemExtra>
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to={undefined}
+                              >
+                                        Edit this post
+                              </Link>
+                    </ItemExtra>
+          </ItemContent>
+</Item>,
+        "_debugID": 36,
+        "_renderedOutput": <Item>
+          <ItemImage
+                    size="medium"
+                    src="http://semantic-ui.com/images/wireframe/short-paragraph.png"
+          />
+          <ItemContent>
+                    <ItemHeader>
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to="/posts/5"
+                              >
+                                        Finn and Jake\`s scrambled eggs
+                              </Link>
+                    </ItemHeader>
+                    <ItemDescription>
+                              <Image
+                                        src="http://semantic-ui.com/images/wireframe/short-paragraph.png"
+                              />
+                              <TextBox>
+                                        Finn and Jake\`s scrambled eggs
+                              </TextBox>
+                    </ItemDescription>
+                    <ItemMeta />
+                    <ItemExtra>
+                              <Connect(Like)
+                                        id={5}
+                              />
+                    </ItemExtra>
+                    <ItemExtra>
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to={undefined}
+                              >
+                                        Edit this post
+                              </Link>
+                    </ItemExtra>
+          </ItemContent>
+</Item>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <BlogItem
+    id={5}
+    image={
+        Object {
+            "src": "http://semantic-ui.com/images/wireframe/short-paragraph.png",
+          }
+    }
+    likes={0}
+    text="Finn and Jake\`s scrambled eggs"
+/>,
+}
+`;

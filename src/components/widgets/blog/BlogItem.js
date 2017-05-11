@@ -7,6 +7,7 @@ import Link from 'components/elements/Link';
 import { postsPath } from 'helpers/routes';
 import { Item } from 'semantic-ui-react';
 import LikeContainer from 'containers/LikeContainer';
+import PropTypes from 'prop-types';
 
 const BlogItem =  (props) => {
   const {
@@ -16,7 +17,7 @@ const BlogItem =  (props) => {
     text,
     id
   } = props;
-  console.log(editPath);
+
   return <Item>
     { image && <Item.Image size='medium' src={ image.src } />}
     <Item.Content>
@@ -50,12 +51,12 @@ BlogItem.defaultProps = {
 };
 
 BlogItem.propTypes = {
-  meta: React.PropTypes.shape(MetaData.propTypes),
-  text: React.PropTypes.string,
-  image: React.PropTypes.shape(Image.propTypes),
-  likes: React.PropTypes.number,
-  increaseLikesHandler: React.PropTypes.func,
-  id: React.PropTypes.number
+  meta: PropTypes.shape(MetaData.propTypes),
+  text: PropTypes.string,
+  image: PropTypes.shape(Image.propTypes),
+  likes: PropTypes.number,
+  increaseLikesHandler: PropTypes.func,
+  id: PropTypes.number
 };
 
 export default BlogItem;
