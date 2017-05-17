@@ -4,6 +4,7 @@ import PieChartPresenter from './PieChartPresenter';
 import { Grid, Item } from 'semantic-ui-react';
 import { map } from 'lodash/collection';
 import  React from 'react';
+import PropTypes from 'prop-types';
 
 const ListPresenter = (props) => {
   return <div>
@@ -35,10 +36,10 @@ const likeTitles = (entries) => (
 );
 
 ListPresenter.propTypes = {
-  items: React.PropTypes.array,
-  increaseLikesHandler: React.PropTypes.func,
-  handlePaginationClick: React.PropTypes.func,
-  likeTitles: React.PropTypes.array
+  items: PropTypes.array,
+  increaseLikesHandler: PropTypes.func,
+  handlePaginationClick: PropTypes.func,
+  likeTitles: PropTypes.array
 };
 
 export default ListPresenter;

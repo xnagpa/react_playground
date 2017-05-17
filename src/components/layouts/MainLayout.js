@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Segment, Header, Container, Button} from 'semantic-ui-react';
 import Link from 'components/elements/Link';
 import HeaderList from 'components/widgets/blog/elements/HeaderList';

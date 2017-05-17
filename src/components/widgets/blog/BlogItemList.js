@@ -1,6 +1,7 @@
 import BlogItem from './BlogItem';
 import { map } from 'lodash/collection';
 import  React from 'react';
+import PropTypes from 'prop-types';
 
 const BlogItemList = (props) => {
   const { items } = props;
@@ -19,7 +20,7 @@ const BlogItemList = (props) => {
 };
 
 BlogItemList.propTypes = {
-  items: React.PropTypes.array
+  items: PropTypes.array
 };
 
 export default BlogItemList;
