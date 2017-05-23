@@ -12,7 +12,7 @@ TextBox.propTypes = {
 
 const Span =  (props) => (
   <p style={{
-    color: 'red'
+    'font-family': 'times, Times New Roman, times-roman, georgia, serif'
   }}>{props.children}</p>
 );
 

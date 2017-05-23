@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import { bind } from 'lodash';
@@ -18,9 +18,12 @@ class Like extends React.Component {
   render() {
     return <div>
       <p>
-        {`${this.props.count || this.props.defaultLikeCount} likes`}
+
       </p>
-      <Button onClick={ this.handleClick }> 'Like this post'</Button>
+      <span onClick={ this.handleClick }>
+        <Icon name='like' />
+        {this.props.count || this.props.defaultLikeCount}
+      </span>
     </div>;
   }
 
@@ -29,6 +32,7 @@ class Like extends React.Component {
 Like.propTypes = {
   count: PropTypes.number,
   increaseLikesHandler: PropTypes.func,
+  defaultLikeCount: PropTypes.number,
   id: PropTypes.number
 };
 
