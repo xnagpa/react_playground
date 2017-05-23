@@ -99,13 +99,13 @@ class TextArea extends React.Component {
 }
 
 TextArea.propTypes = {
-  fieldRef: PropTypes.string,
+  fieldRef: PropTypes.func,
   name: PropTypes.string,
   label: PropTypes.string
 };
 
 Text.propTypes = {
-  fieldRef: PropTypes.string,
+  fieldRef: PropTypes.func,
   name: PropTypes.string,
   label: PropTypes.string,
   error: PropTypes.string,

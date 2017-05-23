@@ -42,7 +42,7 @@ const EditPostView = ({ handleSubmit, pristine, submitting,
 };
 
 renderField.propTypes = {
-  input: PropTypes.func,
+  input: PropTypes.object,
   name: PropTypes.string,
   label: PropTypes.string,
   type: PropTypes.string,
@@ -51,8 +51,8 @@ renderField.propTypes = {
 
 EditPostView.propTypes = {
   handleSubmit: PropTypes.func,
-  pristine: PropTypes.boolean,
-  submitting: PropTypes.boolean,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
   reset: PropTypes.func,
   dispatch: PropTypes.func,
   params: PropTypes.object,

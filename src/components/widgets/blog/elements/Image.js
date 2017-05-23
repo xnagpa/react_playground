@@ -6,7 +6,7 @@ const Image =  (props) => (
   <SemanticImage
     src={props.src}
     size={props.size}
-    rounded={props.rounded}
+    shape={props.shape}
     spaced={props.spaced}
   />
 );
@@ -15,7 +15,7 @@ const Image =  (props) => (
 Image.propTypes = {
   src: PropTypes.string,
   size: PropTypes.string,
-  rounded: PropTypes.boolean,
+  shape: PropTypes.string,
   spaced: PropTypes.string
 };
 
