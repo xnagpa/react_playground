@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { assign, set } from 'lodash/object';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 class CommentForm extends Component {
   constructor(props) {
@@ -103,3 +104,23 @@ const TextArea = ({ name, value, onChange, label }) => (
       onChange={ onChange }/>
   </div>
 );
+
+
+Text.propTypes = {
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  label: PropTypes.string,
+  error: PropTypes.string,
+  value: PropTypes.string
+};
+
+TextArea.propTypes = {
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.string
+};
+
+CommentForm.propTypes = {
+  createCommentHandler: PropTypes.func
+};

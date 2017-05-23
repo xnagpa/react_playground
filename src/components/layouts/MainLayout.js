@@ -9,6 +9,7 @@ const MainLayout = ({ children }) => (
   <Container>
     <Logo />
       <GoBackButton />
+      <p></p>
       {children}
     <Footer />
   </Container>
