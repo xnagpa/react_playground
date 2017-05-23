@@ -21,7 +21,8 @@ const BlogItemList = (props) => {
 };
 
 BlogItemList.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  increaseLikesHandler: PropTypes.func
 };
 
 export default BlogItemList;

@@ -4,12 +4,12 @@ import like from 'actions/Like';
 import { find, get} from 'lodash';
 
 const stateToProps = (state, ownProps) => {
-
-  const likeEntry = find(get(state, 'like.entries', false), { id: ownProps.id });
-  const postsEntry  = find(get(state, 'posts.entries', false), { id: ownProps.id });
+  const likeEntry = find(get(state, 'like.entries', false),
+    { id: ownProps.id });
+  const postsEntry  = find(get(state, 'posts.entries', false),
+    { id: ownProps.id });
   const postEntry = get(state, 'post.entry', false);
-
-  let finalEntry = likeEntry || postsEntry || postEntry;
+  const finalEntry = likeEntry || postsEntry || postEntry;
 
   return {
     count:  finalEntry.likes || 0,
@@ -18,12 +18,12 @@ const stateToProps = (state, ownProps) => {
   };
 };
 
-const actionsToProps = (dispatch, ownProps) => {
-  return {
+const actionsToProps = (dispatch, ownProps) => (
+  {
     increaseLikesHandler: () => {
       dispatch(like(ownProps.id));
     }
-  };
-};
+  }
+);
 
 export default connect(stateToProps, actionsToProps)(Like);

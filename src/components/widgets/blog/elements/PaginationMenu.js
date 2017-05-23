@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { List } from 'semantic-ui-react';
+import { List, Button } from 'semantic-ui-react';
 import { map, range, bind } from 'lodash';
-import { Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 class PaginationMenu extends Component {
@@ -20,7 +19,10 @@ class PaginationMenu extends Component {
     return (
         <List horizontal>
           {map(range(1,pagesCount + 1), (entry) => (
-              <Button key={entry} onClick={ () => (this.handleClick(entry)) }>Страница {entry}</Button>
+              <Button
+                key={entry}
+                onClick={ () => (this.handleClick(entry))
+              }>Страница {entry}</Button>
           ))}
         </List>
     );

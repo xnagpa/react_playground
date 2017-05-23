@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { assign, set } from 'lodash/object';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 class ControlledForm extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class ControlledForm extends Component {
 
   onSubmit(e)  {
     e.preventDefault();
-    console.log(JSON.stringify(this.state.form.values ));
+    console.log(JSON.stringify(this.state.form.values));
   }
 
   clearError(fieldName) {
@@ -34,17 +35,17 @@ class ControlledForm extends Component {
 
   handleChange(fieldName) {
     return (e) => {
-        switch(fieldName) {
-          case 'email':
-            this.clearError('email');
-            if (e.target.value.length < 3)
-              this.setState(set(
-                assign({}, this.state),
-                'form.errors.email',
-                true
-              ));
-            break;
-        }
+      switch (fieldName) {
+        case 'email':
+          this.clearError('email');
+          if (e.target.value.length < 3)
+            this.setState(set(
+              assign({}, this.state),
+              'form.errors.email',
+              true
+            ));
+          break;
+      }
 
       this.setState(set(
           assign({}, this.state),
@@ -99,6 +100,16 @@ const Text = ({ name, value, onChange, label, error }) => (
   </div>
 );
 
+
+Text.propTypes = {
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  label: PropTypes.string,
+  error: PropTypes.string,
+  value: PropTypes.string
+};
+
+
 const TextArea = ({ name, value, onChange, label }) => (
   <div className="ui field">
     <label htmlFor= { name }>{ label }</label>
@@ -110,3 +121,10 @@ const TextArea = ({ name, value, onChange, label }) => (
       onChange={ onChange }/>
   </div>
 );
+
+TextArea.propTypes = {
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  label: PropTypes.string,
+  value: PropTypes.string
+};

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bind } from 'lodash';
 import { assign, mapValues } from 'lodash/object';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 class UncontrolledForm extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class UncontrolledForm extends Component {
     this.setState({ errors: {} });
     const values = mapValues(this.form, 'value');
 
-    if (!values.email || values.email.length < 3){
+    if (!values.email || values.email.length < 3) {
       const err = assign(
         {},
         this.state,
@@ -63,7 +64,7 @@ class UncontrolledForm extends Component {
 export default UncontrolledForm;
 
 class Text extends React.Component {
-  render(){
+  render() {
     const { label, name, fieldRef, error } = this.props;
     return (
       <div className={classNames('ui field', { error })}>
@@ -81,7 +82,7 @@ class Text extends React.Component {
 }
 
 class TextArea extends React.Component {
-  render(){
+  render() {
     const { label, name, fieldRef } = this.props;
     return (
       <div className="ui field">
@@ -96,3 +97,16 @@ class TextArea extends React.Component {
     );
   }
 }
+
+TextArea.propTypes = {
+  fieldRef: PropTypes.string,
+  name: PropTypes.string,
+  label: PropTypes.string
+};
+
+Text.propTypes = {
+  fieldRef: PropTypes.string,
+  name: PropTypes.string,
+  label: PropTypes.string,
+  error: PropTypes.string,
+};

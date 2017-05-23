@@ -4,7 +4,6 @@ import { assign, pick } from 'lodash';
 import { editPath } from 'helpers/routes/edit';
 
 const stateToProps = (state) => {
-
   const parameters = state.post.entry ? assign({}, pick(state.post.entry,
              ['meta', 'image', 'likes', 'text', 'id']),
     { key: state.post.entry.id,

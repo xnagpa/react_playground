@@ -6,8 +6,8 @@ import { map } from 'lodash/collection';
 import  React from 'react';
 import PropTypes from 'prop-types';
 
-const ListPresenter = (props) => {
-  return <div>
+const ListPresenter = (props) => (
+   <div>
     <Grid>
       <Grid.Column key={0} width={12}>
         <Item.Group>
@@ -26,8 +26,8 @@ const ListPresenter = (props) => {
           <PieChartPresenter likeTitles={likeTitles(props.items)}/>}
       </Grid.Column>
     </Grid>
-  </div>;
-};
+  </div>
+);
 
 const likeTitles = (entries) => (
   (map(entries, (entry) => (
